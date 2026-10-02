@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+    <style>
+    @media print {
+        /* Ẩn bớt Header, Banner, Footer và các nút bấm khi lưu PDF */
+        header, section, footer, button, select, label {
+            display: none !important;
+        }
+        /* Tối ưu khung chứa bài học hiển thị đẹp nhất trên trang A4 */
+        main {
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+        }
+    }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduShare - Hệ Thống Học Liệu Chuyển Tiếp Hợp Pháp</title>
@@ -598,7 +612,7 @@
         }
 
         function downloadSheet() {
-            alert('Đang tạo và tải xuống Phiếu Học Tập Tuần (Dạng PDF dung lượng nhẹ, hợp pháp)...');
+            window.print();
         }
 
         function handleBorrow(e) {
