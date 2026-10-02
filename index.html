@@ -32,7 +32,7 @@
     <!-- Hero Banner -->
     <section class="bg-blue-800 text-white py-8 px-4 text-center">
         <div class="max-w-4xl mx-auto">
-            <span class="bg-blue-700 text-yellow-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Giải pháp Chuyển tiếp 2-4 Tuần Đầu Năm Học</span>
+            <span class="bg-blue-700 text-yellow-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">v3.0 - Đã cập nhật đủ Lớp 10, 11, 12</span>
             <h2 class="text-2xl md:text-3xl font-extrabold mt-3 mb-2">Đảm Bảo Học Tập Liên Tục - Tuân Thủ 100% Luật SHTT</h2>
             <p class="text-blue-100 text-sm max-w-2xl mx-auto">Hỗ trợ học sinh tiếp cận kiến thức cốt lõi trong thời gian chờ nguồn sách giáo khoa chính thức được cung ứng đầy đủ.</p>
         </div>
@@ -194,7 +194,6 @@
 
     <!-- Interactive Script -->
     <script>
-        // Database structured by Grade -> Subject -> Week
         const worksheetData = {
             "10": {
                 "Toán": {
@@ -315,7 +314,7 @@
             "11": {
                 "Toán": {
                     "1": {
-                        title: "Hàm Số Lượng Giác & Giá Trị Lượng Giác",
+                        title: "Hàm Số Lượng Giác & Giá Trị Lượng Giác (Toán 11)",
                         theory: [
                             "<b>Đường tròn lượng giác:</b> Đường tròn bán kính R = 1 tâm O(0,0). Trục tung là trục sin, trục hoành là trục cos.",
                             "<b>Công thức cơ bản:</b> sin²x + cos²x = 1; tanx = sinx / cosx (với cosx ≠ 0)."
@@ -327,7 +326,7 @@
                         ]
                     },
                     "2": {
-                        title: "Phương Trình Lượng Giác Cơ Bản",
+                        title: "Phương Trình Lượng Giác Cơ Bản (Toán 11)",
                         theory: [
                             "<b>Phương trình sinx = sinα:</b> x = α + k2π hoặc x = π - α + k2π (k ∈ ℤ).",
                             "<b>Phương trình cosx = cosα:</b> x = ±α + k2π (k ∈ ℤ)."
@@ -339,7 +338,7 @@
                         ]
                     },
                     "3": {
-                        title: "Dãy Số & Cấp Số Cộng",
+                        title: "Dãy Số & Cấp Số Cộng (Toán 11)",
                         theory: [
                             "<b>Cấp số cộng (CSC):</b> Dãy số uₙ trong đó uₙ₊₁ = uₙ + d (d là công sai).",
                             "<b>Số hạng tổng quát:</b> uₙ = u₁ + (n - 1)d."
@@ -353,7 +352,7 @@
                 },
                 "Ngữ Văn": {
                     "1": {
-                        title: "Thơ Trữ Tình Hiện Đại & Biện Pháp Tu Từ",
+                        title: "Thơ Trữ Tình Hiện Đại (Ngữ Văn 11)",
                         theory: [
                             "<b>Thơ trữ tình:</b> Bộc lộ cảm xúc, tâm tư trực tiếp của chủ thể trữ tình trước thiên nhiên, cuộc sống.",
                             "<b>Yếu tố cấu thành:</b> Hình ảnh thơ, nhịp điệu, cấu tứ và ngôn từ nghệ thuật."
@@ -377,7 +376,7 @@
                         ]
                     },
                     "3": {
-                        title: "Viết Văn Bản Nghị Luận Xã Hội Về Tư Tưởng Đạo Lý",
+                        title: "Viết Văn Bản Nghị Luận Xã Hội (Ngữ Văn 11)",
                         theory: [
                             "<b>Yêu cầu:</b> Giải thích khái niệm -> Phân tích biểu hiện -> Chứng minh bằng thực tế -> Đánh giá & Bài học.",
                             "<b>Lưu ý:</b> Dẫn chứng phải chính xác, mang tính thời sự và có sức thuyết phục."
@@ -391,7 +390,7 @@
                 },
                 "Vật Lý": {
                     "1": {
-                        title: "Dao Động Điều Hòa & Cắt Tóm Kiến Thức",
+                        title: "Dao Động Điều Hòa (Vật Lý 11)",
                         theory: [
                             "<b>Phương trình dao động:</b> x = A.cos(ωt + φ). Trong đó A là biên độ, ω là tần số góc, φ là pha ban đầu.",
                             "<b>Vận tốc & Gia tốc:</b> v = -ωA.sin(ωt + φ); a = -ω²x."
@@ -403,7 +402,7 @@
                         ]
                     },
                     "2": {
-                        title: "Sóng Cơ & Sự Truyền Sóng Cơ",
+                        title: "Sóng Cơ & Sự Truyền Sóng Cơ (Vật Lý 11)",
                         theory: [
                             "<b>Sóng cơ:</b> Sự lan truyền dao động cơ trong môi trường vật chất.",
                             "<b>Bước sóng (λ):</b> Quãng đường sóng truyền được trong 1 chu kỳ: λ = v.T = v / f."
@@ -415,7 +414,7 @@
                         ]
                     },
                     "3": {
-                        title: "Sự Giao Thoa Sóng",
+                        title: "Sự Giao Thoa Sóng (Vật Lý 11)",
                         theory: [
                             "<b>Điều kiện giao thoa:</b> Hai nguồn kết hợp (cùng tần số và hiệu số pha không đổi theo thời gian).",
                             "<b>Vị trí cực đại:</b> d₂ - d₁ = kλ (k ∈ ℤ); Vị trí cực tiểu: d₂ - d₁ = (k + 0.5)λ."
@@ -431,7 +430,7 @@
             "12": {
                 "Toán": {
                     "1": {
-                        title: "Tính Đơn Điệu Của Hàm Số (Đồng Biến & Nghịch Biến)",
+                        title: "Tính Đơn Điệu Của Hàm Số (Toán 12)",
                         theory: [
                             "<b>Quy tắc xét tính đơn điệu:</b> Tính đạo hàm f'(x). Nếu f'(x) > 0 với mọi x ∈ (a, b) thì hàm số đồng biến trên (a, b).",
                             "<b>Nếu f'(x) < 0:</b> Hàm số nghịch biến trên khoảng đó."
@@ -443,7 +442,7 @@
                         ]
                     },
                     "2": {
-                        title: "Giá Trị Lớn Nhất & Nhỏ Nhất Của Hàm Số",
+                        title: "Giá Trị Lớn Nhất & Nhỏ Nhất (Toán 12)",
                         theory: [
                             "<b>Cách tìm trên đoạn [a, b]:</b> 1. Tính f'(x), tìm nghiệm xᵢ ∈ (a, b). 2. Tính f(a), f(b), f(xᵢ). 3. Số lớn nhất là max, nhỏ nhất là min."
                         ],
@@ -454,7 +453,7 @@
                         ]
                     },
                     "3": {
-                        title: "Cực Trị Của Hàm Số",
+                        title: "Cực Trị Của Hàm Số (Toán 12)",
                         theory: [
                             "<b>Điểm cực trị:</b> Là điểm x₀ mà tại đó f'(x) đổi dấu khi qua x₀.",
                             "<b>Đổi dấu từ + sang -:</b> x₀ là điểm cực đại; <b>Từ - sang +:</b> x₀ là điểm cực tiểu."
@@ -468,7 +467,7 @@
                 },
                 "Ngữ Văn": {
                     "1": {
-                        title: "Tác Phẩm Văn Học Hiện Đại Việt Nam Lớp 12",
+                        title: "Tác Phẩm Văn Học Hiện Đại (Ngữ Văn 12)",
                         theory: [
                             "<b>Xu hướng văn học:</b> Đổi mới tư duy nghệ thuật, nhìn nhận con người ở nhiều góc độ đời tư - thế sự.",
                             "<b>Yêu cầu đọc hiểu:</b> Phân tích tình huống truyện, ngôn ngữ nhân vật và cảm hứng chủ đạo."
@@ -480,7 +479,7 @@
                         ]
                     },
                     "2": {
-                        title: "Nghệ Thuật Xây Dựng Tình Huống Truyện",
+                        title: "Nghệ Thuật Xây Dựng Tình Huống Truyện (Ngữ Văn 12)",
                         theory: [
                             "<b>Tình huống truyện:</b> Sự kiện bộc lộ rõ nhất bản chất nhân vật và tư tưởng tác phẩm.",
                             "<b>Các loại tình huống:</b> Tình huống tâm trạng, tình huống hành động, tình huống nhận thức."
@@ -492,7 +491,7 @@
                         ]
                     },
                     "3": {
-                        title: "Nghị Luận Về Một Ý Kiến Bàn Về Văn Học",
+                        title: "Nghị Luận Lý Luận Văn Học (Ngữ Văn 12)",
                         theory: [
                             "<b>Quy trình:</b> Giải thích nhận định -> Phân tích chứng minh qua các tác phẩm -> Đánh giá nâng cao.",
                             "<b>Yêu cầu:</b> Kiến thức lý luận văn học vững chắc, dẫn chứng thuyết phục."
@@ -506,7 +505,7 @@
                 },
                 "Vật Lý": {
                     "1": {
-                        title: "Mô Hình Động Học Phân Tử Chất Khí",
+                        title: "Mô Hình Động Học Phân Tử Chất Khí (Vật Lý 12)",
                         theory: [
                             "<b>Thuyết động học phân tử:</b> Chất khí gồm các phân tử chuyển động hỗn loạn không ngừng.",
                             "<b>Nhiệt độ & Động năng:</b> Nhiệt độ càng cao thì các phân tử chuyển động càng nhanh."
@@ -518,7 +517,7 @@
                         ]
                     },
                     "2": {
-                        title: "Các Định Luật Khí Lý Tưởng (Boyle-Mariotte & Charles)",
+                        title: "Các Định Luật Khí Lý Tưởng (Vật Lý 12)",
                         theory: [
                             "<b>Định luật Boyle (Đẳng nhiệt):</b> p₁V₁ = p₂V₂ (Áp suất tỉ lệ nghịch với thể tích).",
                             "<b>Định luật Charles (Đẳng áp):</b> V₁ / T₁ = V₂ / T₂."
@@ -530,7 +529,7 @@
                         ]
                     },
                     "3": {
-                        title: "Phương Trình Trạng Thái Khí Lý Tưởng",
+                        title: "Phương Trình Trạng Thái Khí Lý Tưởng (Vật Lý 12)",
                         theory: [
                             "<b>Phương trình tổng quát:</b> (p₁V₁) / T₁ = (p₂V₂) / T₂ hay pV = nRT.",
                             "<b>Trong đó:</b> R là hằng số khí lý tưởng R ≈ 8.31 J/(mol.K)."
@@ -569,17 +568,14 @@
             const subject = document.getElementById('subjectSelect').value;
             const week = document.getElementById('weekSelect').value;
 
-            // Update Badge Text
             document.getElementById('wsBadge').innerText = `${subject} Lớp ${grade} - Tuần ${week}`;
             
-            // Get data according to Grade -> Subject -> Week
             const data = (worksheetData[grade] && worksheetData[grade][subject] && worksheetData[grade][subject][week])
                 ? worksheetData[grade][subject][week]
                 : worksheetData["10"]["Toán"]["1"];
 
             document.getElementById('wsTitle').innerText = data.title;
 
-            // Render HTML
             const contentBox = document.getElementById('wsContent');
             contentBox.innerHTML = `
                 <div>
