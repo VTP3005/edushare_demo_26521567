@@ -3,7 +3,7 @@
 > **Đề xuất Giải pháp Sơ tuyển AI Club UIT 2026**
 > 
 > 🌐 **Website Demo Trực Tuyến:** [EduShare — Hệ Thống Học Liệu Chuyển Tiếp & Tủ Sách Xoay Vòng Hợp Pháp](https://vtp3005.github.io/edushare_demo_26521567/)  
-> 📄 **Báo Cáo Chi Tiết (Google Doc / PDF):** [Đề xuất Giải pháp EduShare](https://docs.google.com/document/d/1pZ6J8FRhrr8nTH8MmmvIrVORB-u4mcEbcm9Cwaqvsa0/edit?usp=drive_web)
+> 📄 **Báo Cáo Chi Tiết (Google Doc / PDF):** [Đề xuất Giải pháp EduShare](https://docs.google.com/document/d/1pZ6J8FRhrr8nTH8MmmvIrVORB-u4mcEbcm9Cwaqvsa0/edit?usp=sharing)
 
 ---
 
