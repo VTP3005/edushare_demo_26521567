@@ -14,17 +14,17 @@
     <!-- Header Navigation -->
     <header class="bg-blue-900 text-white shadow-md">
         <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
-            <div class="flex items-center space-x-3 mb-2 md:mb-0">
-                <i class="fa-solid font-bold text-yellow-400 text-3xl fa-book-open-reader"></i>
+            <div class="flex items-center space-x-3 mb-3 md:mb-0">
+                <i class="fa-solid fa-book-open-reader text-yellow-400 text-3xl"></i>
                 <div>
                     <h1 class="text-2xl font-bold tracking-wide">EduShare</h1>
                     <p class="text-xs text-blue-200">Hệ Thống Học Liệu Chuyển Tiếp & Tủ Sách Xoay Vòng</p>
                 </div>
             </div>
-            <nav class="flex space-x-4 text-sm font-medium">
-                <button onclick="showTab('worksheet')" class="hover:text-yellow-400 transition py-1 px-2 border-b-2 border-transparent hover:border-yellow-400">Phiếu Học Tập</button>
-                <button onclick="showTab('edubank')" class="hover:text-yellow-400 transition py-1 px-2 border-b-2 border-transparent hover:border-yellow-400">Mượn Sách Cũ</button>
-                <button onclick="showTab('legal')" class="hover:text-yellow-400 transition py-1 px-2 border-b-2 border-transparent hover:border-yellow-400">Căn Cứ Pháp Lý</button>
+            <nav class="flex flex-wrap justify-center space-x-2 md:space-x-4 text-sm font-medium">
+                <button id="nav-worksheet" onclick="showTab('worksheet')" class="py-1 px-3 rounded-lg border-b-2 border-yellow-400 text-yellow-400 bg-blue-800/50 transition">Phiếu Học Tập</button>
+                <button id="nav-edubank" onclick="showTab('edubank')" class="py-1 px-3 rounded-lg border-b-2 border-transparent hover:text-yellow-400 transition">Mượn Sách Cũ</button>
+                <button id="nav-legal" onclick="showTab('legal')" class="py-1 px-3 rounded-lg border-b-2 border-transparent hover:text-yellow-400 transition">Căn Cứ Pháp Lý</button>
             </nav>
         </div>
     </header>
@@ -39,7 +39,7 @@
     </section>
 
     <!-- Main Content Container -->
-    <main class="max-w-5xl mx-auto px-4 py-8 flex-grow">
+    <main class="max-w-5xl mx-auto px-4 py-8 flex-grow w-full">
 
         <!-- TAB 1: PHIẾU HỌC TẬP TUẦN -->
         <div id="tab-worksheet" class="space-y-6">
@@ -76,32 +76,19 @@
 
                 <!-- Worksheet Preview Card -->
                 <div class="border-2 border-dashed border-blue-200 rounded-lg p-6 bg-blue-50/50">
-                    <div class="flex justify-between items-start mb-4">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
                         <div>
-                            <span id="wsBadge" class="bg-blue-600 text-white text-xs px-2 py-1 rounded font-semibold">Toán Lớp 10 - Tuần 1</span>
+                            <span id="wsBadge" class="bg-blue-600 text-white text-xs px-2.5 py-1 rounded-md font-semibold">Toán Lớp 10 - Tuần 1</span>
                             <h4 id="wsTitle" class="text-xl font-bold text-slate-800 mt-2">Mệnh Đề Và Tập Hợp (Trọng Tâm)</h4>
                         </div>
-                        <button onclick="downloadSheet()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm px-4 py-2 rounded-lg font-medium flex items-center shadow transition">
+                        <button onclick="downloadSheet()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm px-4 py-2 rounded-lg font-medium flex items-center shadow transition shrink-0">
                             <i class="fa-solid fa-download mr-2"></i> Tải Phiếu PDF
                         </button>
                     </div>
                     
-                    <div class="space-y-4 text-sm text-slate-700 bg-white p-4 rounded-lg border">
-                        <div>
-                            <h5 class="font-bold text-blue-900 mb-1">I. Kiến Thức Cốt Lõi (Trích dẫn bài giảng):</h5>
-                            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
-                                <li><b>Mệnh đề:</b> Là một phát biểu khẳng định đúng hoặc sai. Không thể vừa đúng vừa sai.</li>
-                                <li><b>Mệnh đề phủ định:</b> Phủ định của mệnh đề $P$ là $\overline{P}$. Nếu $P$ đúng thì $\overline{P}$ sai.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-blue-900 mb-1">II. Ví Dụ Minh Họa:</h5>
-                            <p class="pl-2 italic text-slate-600">Ví dụ: Cho mệnh đề A: "Phủ Lý là thủ phủ của tỉnh Hà Nam". Mệnh đề phủ định $\overline{A}$: "Phủ Lý không phải là thủ phủ của tỉnh Hà Nam".</p>
-                        </div>
-                        <div>
-                            <h5 class="font-bold text-blue-900 mb-1">III. Bài Tập Tự Luyện (Giáo viên tự biên soạn):</h5>
-                            <p class="pl-2 text-slate-600">1. Trong các câu sau, câu nào là mệnh đề toán học?<br>2. Lập mệnh đề phủ định của phát biểu: "Mọi số thực x đều có $x^2 \ge 0$".</p>
-                        </div>
+                    <!-- Dynamic Content Area -->
+                    <div id="wsContent" class="space-y-4 text-sm text-slate-700 bg-white p-4 rounded-lg border">
+                        <!-- Content populated dynamically via JS -->
                     </div>
                     <p class="text-xs text-slate-500 mt-3 italic">*Tài liệu biên soạn nội bộ phục vụ mục đích giảng dạy và học tập cá nhân theo Điểm c Khoản 1 Điều 25 Luật SHTT.</p>
                 </div>
@@ -114,7 +101,7 @@
                 <!-- Form Mượn Sách -->
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                     <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center">
-                        <i class="fa-solid fa-hand-holding-hand text-blue-600 mr-2"></i> Đăng Ký Mượn Sách Cũ Xoay Vòng
+                        <i class="fa-solid fa-book-bookmark text-blue-600 mr-2"></i> Đăng Ký Mượn Sách Cũ Xoay Vòng
                     </h3>
                     <form onsubmit="handleBorrow(event)" class="space-y-4 text-sm">
                         <div>
@@ -133,7 +120,7 @@
                                 <option>Bộ Sách Giáo Khoa Vật Lý 10 (Chân Trời Sáng Tạo)</option>
                             </select>
                         </div>
-                        <button type="submit" class="w-full bg-blue-900 hover:bg-blue-800 text-white py-2 rounded-lg font-semibold transition">Xác Nhận Đăng Ký Mượn</button>
+                        <button type="submit" class="w-full bg-blue-900 hover:bg-blue-800 text-white py-2.5 rounded-lg font-semibold transition">Xác Nhận Đăng Ký Mượn</button>
                     </form>
                 </div>
 
@@ -152,7 +139,7 @@
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Số Lượng Bộ Sách Đóng Góp</label>
                             <input type="number" min="1" value="1" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
                         </div>
-                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-semibold transition">Gửi Đăng Ký Trao Tặng</button>
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-lg font-semibold transition">Gửi Đăng Ký Trao Tặng</button>
                     </form>
                 </div>
             </div>
@@ -207,12 +194,145 @@
 
     <!-- Interactive Script -->
     <script>
+        // Sample database for dynamic demo content
+        const worksheetData = {
+            "Toán": {
+                "1": {
+                    title: "Mệnh Đề Và Tập Hợp (Trọng Tâm)",
+                    theory: [
+                        "<b>Mệnh đề:</b> Là phát biểu khẳng định đúng hoặc sai. Không thể vừa đúng vừa sai.",
+                        "<b>Mệnh đề phủ định:</b> Phủ định của mệnh đề P là P̅ (mệnh đề không P). Nếu P đúng thì P̅ sai."
+                    ],
+                    example: "Cho mệnh đề A: 'Phủ Lý là thủ phủ của tỉnh Hà Nam'. Mệnh đề phủ định A̅: 'Phủ Lý không phải là thủ phủ của tỉnh Hà Nam'.",
+                    exercises: [
+                        "1. Trong các phát biểu sau, đâu là mệnh đề toán học?",
+                        "2. Lập mệnh đề phủ định của phát biểu: 'Mọi số thực x đều có x² ≥ 0'."
+                    ]
+                },
+                "2": {
+                    title: "Các Phép Toán Trên Tập Hợp",
+                    theory: [
+                        "<b>Giao của hai tập hợp (A ∩ B):</b> Tập hợp gồm các phần tử vừa thuộc A vừa thuộc B.",
+                        "<b>Hợp của hai tập hợp (A ∪ B):</b> Tập hợp gồm các phần tử thuộc A hoặc thuộc B."
+                    ],
+                    example: "Cho A = {1; 2; 3}, B = {3; 4}. Khi đó A ∩ B = {3}, A ∪ B = {1; 2; 3; 4}.",
+                    exercises: [
+                        "1. Cho A = {x ∈ ℝ | x < 3} và B = [1; 5]. Tìm A ∩ B và A ∪ B.",
+                        "2. Xóa các phần tử trùng lặp trong hai tập hợp hợp lệ."
+                    ]
+                },
+                "3": {
+                    title: "Bất Phương Trình Bậc Nhất Hai Ẩn",
+                    theory: [
+                        "<b>Dạng tổng quát:</b> ax + by < c (hoặc ≤, >, ≥) với a, b không đồng thời bằng 0.",
+                        "<b>Miền nghiệm:</b> Nửa mặt phẳng có bờ là đường thẳng ax + by = c."
+                    ],
+                    example: "Biểu diễn miền nghiệm của x + y ≤ 2 trên mặt phẳng tọa độ Oxy.",
+                    exercises: [
+                        "1. Xác định điểm M(1; 1) có thuộc miền nghiệm của 2x - 3y + 1 > 0 không?",
+                        "2. Vẽ miền nghiệm của hệ bất phương trình bậc nhất hai ẩn."
+                    ]
+                }
+            },
+            "Ngữ Văn": {
+                "1": {
+                    title: "Cấu Trúc Tác Phẩm Sử Thi & Truyện Thần Thoại",
+                    theory: [
+                        "<b>Thần thoại:</b> Thể loại tự sự dân gian giải thích các hiện tượng tự nhiên và đời sống xã hội.",
+                        "<b>Cấu trúc cốt truyện:</b> Mở đầu khai phá - Thách thức thần linh - Kết thúc kiến tạo thế giới."
+                    ],
+                    example: "Phân tích hình tượng Thần Trụ Trời trong việc giải thích sự hình thành trời đất.",
+                    exercises: [
+                        "1. Nêu các đặc điểm không gian và thời gian trong thần thoại Việt Nam.",
+                        "2. Tóm tắt các sự kiện chính trong thần thoại 'Thần Trụ Trời'."
+                    ]
+                },
+                "2": {
+                    title: "Nghệ Thuật Xây Dựng Nhân Vật Trong Sử Thi",
+                    theory: [
+                        "<b>Nhân vật anh hùng sử thi:</b> Đại diện cho sức mạnh, danh dự và trí tuệ của cộng đồng.",
+                        "<b>Biện pháp nghệ thuật:</b> Ph phóng đại, so sánh trùng điệp, miêu tả hành động hoành tráng."
+                    ],
+                    example: "Đoạn trích 'Đăm Săn đi bắt Nữ Thần Mặt Trời' phản ánh khát vọng chinh phục thiên nhiên.",
+                    exercises: [
+                        "1. Cảm nhận của em về cảnh chiến đấu giữa Đăm Săn và Mtao Mxây.",
+                        "2. Phân tích tác dụng của biện pháp phóng đại trong văn bản."
+                    ]
+                },
+                "3": {
+                    title: "Viết Bài Văn Nghị Luận Về Một Tác Phẩm Văn Học",
+                    theory: [
+                        "<b>Mở bài:</b> Giới thiệu tác giả, tác phẩm và vấn đề nghị luận cốt lõi.",
+                        "<b>Thân bài:</b> Phân tích nội dung chủ đề, đặc sắc nghệ thuật và đánh giá giá trị tác phẩm."
+                    ],
+                    example: "Lập dàn ý phân tích bài thơ 'Mùa thu về' của tác giả dân gian.",
+                    exercises: [
+                        "1. Viết đoạn văn mở bài phân tích nhân vật anh hùng Đăm Săn.",
+                        "2. Sửa lỗi logic trong luận điểm nghị luận văn học."
+                    ]
+                }
+            },
+            "Vật Lý": {
+                "1": {
+                    title: "Mô Tả Chuyển Động & Tốc Độ, Vận Tốc",
+                    theory: [
+                        "<b>Độ dịch chuyển (d):</b> Đại lượng vectơ nối vị trí đầu và vị trí cuối của chuyển động.",
+                        "<b>Vận tốc trung bình (v):</b> v = Δd / Δt (khác với tốc độ trung bình = s / t)."
+                    ],
+                    example: "Một xe chạy từ A đến B dài 60km trong 1h, rồi quay lại A trong 1h. Tốc độ trung bình là 60km/h, nhưng vận tốc trung bình bằng 0.",
+                    exercises: [
+                        "1. Phân biệt sự khác nhau giữa quãng đường đi được và độ dịch chuyển.",
+                        "2. Tính tốc độ trung bình của người đi bộ trên quãng đường hai giai đoạn."
+                    ]
+                },
+                "2": {
+                    title: "Chuyển Động Biến Đổi Đều",
+                    theory: [
+                        "<b>Gia tốc (a):</b> a = (v - v₀) / t. Đặc trưng cho sự biến thiên nhanh chậm của vận tốc.",
+                        "<b>Công thức vận tốc:</b> v = v₀ + at; Công thức quãng đường: s = v₀t + ½at²."
+                    ],
+                    example: "Xe bắt đầu chuyển động nhanh dần đều từ trạng thái nghỉ với gia tốc a = 2 m/s². Sau 5s vận tốc v = 10 m/s.",
+                    exercises: [
+                        "1. Một ô tô đang chạy 18 m/s thì hãm phanh dừng lại sau 6s. Tính gia tốc hãm.",
+                        "2. Lập đồ thị vận tốc - thời gian của chuyển động thẳng biến đổi đều."
+                    ]
+                },
+                "3": {
+                    title: "Sự Rơi Tự Do",
+                    theory: [
+                        "<b>Đặc điểm:</b> Là sự rơi chỉ chịu tác dụng của trọng lực.",
+                        "<b>Gia tốc rơi tự do (g):</b> Tại Trái Đất g ≈ 9.8 m/s² (hoặc 10 m/s²)."
+                    ],
+                    example: "Thả rơi một vật từ độ cao h = 20m (lấy g = 10 m/s²). Thời gian rơi t = √(2h/g) = 2 giây.",
+                    exercises: [
+                        "1. Tính vận tốc chạm đất của vật rơi tự do từ độ cao 45m.",
+                        "2. So sánh sự rơi của tờ giấy phẳng và tờ giấy vo tròn trong không khí."
+                    ]
+                }
+            }
+        };
+
         function showTab(tabName) {
+            // Hide all tabs
             document.getElementById('tab-worksheet').classList.add('hidden');
             document.getElementById('tab-edubank').classList.add('hidden');
             document.getElementById('tab-legal').classList.add('hidden');
 
+            // Reset nav button active styles
+            const navIds = ['nav-worksheet', 'nav-edubank', 'nav-legal'];
+            navIds.forEach(id => {
+                const btn = document.getElementById(id);
+                btn.classList.remove('border-yellow-400', 'text-yellow-400', 'bg-blue-800/50');
+                btn.classList.add('border-transparent');
+            });
+
+            // Show selected tab
             document.getElementById('tab-' + tabName).classList.remove('hidden');
+
+            // Highlight selected nav button
+            const activeBtn = document.getElementById('nav-' + tabName);
+            activeBtn.classList.remove('border-transparent');
+            activeBtn.classList.add('border-yellow-400', 'text-yellow-400', 'bg-blue-800/50');
         }
 
         function updateWorksheet() {
@@ -220,23 +340,58 @@
             const subject = document.getElementById('subjectSelect').value;
             const week = document.getElementById('weekSelect').value;
 
+            // Update Badge and Title
             document.getElementById('wsBadge').innerText = `${subject} Lớp ${grade} - Tuần ${week}`;
-            document.getElementById('wsTitle').innerText = `Tóm Tắt Kiến Thức Cốt Lõi (${subject} - Tuần ${week})`;
+            
+            // Get content from sample database
+            const data = (worksheetData[subject] && worksheetData[subject][week]) 
+                ? worksheetData[subject][week] 
+                : worksheetData["Toán"]["1"];
+
+            document.getElementById('wsTitle').innerText = data.title;
+
+            // Generate HTML content dynamically
+            const contentBox = document.getElementById('wsContent');
+            contentBox.innerHTML = `
+                <div>
+                    <h5 class="font-bold text-blue-900 mb-1">I. Kiến Thức Cốt Lõi (Trích dẫn bài giảng):</h5>
+                    <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
+                        ${data.theory.map(t => `<li>${t}</li>`).join('')}
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-blue-900 mb-1">II. Ví Dụ Minh Họa:</h5>
+                    <p class="pl-2 italic text-slate-600">${data.example}</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-blue-900 mb-1">III. Bài Tập Tự Luyện (Giáo viên tự biên soạn):</h5>
+                    <p class="pl-2 text-slate-600">
+                        ${data.exercises.map(e => `${e}<br>`).join('')}
+                    </p>
+                </div>
+            `;
         }
 
         function downloadSheet() {
-            alert('Đang tải xuống Phiếu Học Tập Tuần (Dạng PDF dung lượng nhẹ, hợp pháp)...');
+            alert('Đang tạo và tải xuống Phiếu Học Tập Tuần (Dạng PDF dung lượng nhẹ, hợp pháp)...');
         }
 
         function handleBorrow(e) {
             e.preventDefault();
             alert('Đăng ký mượn sách thành công! Vui lòng nhận sách tại Thư viện trường vào giờ ra chơi.');
+            e.target.reset();
         }
 
         function handleDonate(e) {
             e.preventDefault();
             alert('Cảm ơn đóng góp của bạn! Bộ phận Đoàn trường sẽ liên hệ tiếp nhận sách.');
+            e.target.reset();
         }
+
+        // Initialize default view
+        window.onload = function() {
+            updateWorksheet();
+        };
     </script>
 </body>
 </html>
