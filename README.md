@@ -1,9 +1,9 @@
 # 📚 EduShare — Hệ Thống Học Liệu Chuyển Tiếp & Tủ Sách Xoay Vòng Hợp Pháp
 
 > **Đề xuất Giải pháp Sơ tuyển AI Club UIT 2026**
-> [
-> 🔗 **Website Demo Trực Tuyến:**](https://vtp3005.github.io/edushare_demo_26521567/) 
-> 📄 **Báo Cáo Chi Tiết (Google Doc/PDF):** [Đường dẫn tới file Báo cáo PDF của bạn]
+> 
+> 🌐 **Website Demo Trực Tuyến:** [https://vtp3005.github.io/edushare_demo_26521567/](https://vtp3005.github.io/edushare_demo_26521567/)  
+> 📄 **Báo Cáo Chi Tiết (Google Doc / PDF):** [https://docs.google.com/document/d/1pZ6J8FRhrr8nTH8MmmvIrVORB-u4mcEbcm9Cwaqvsa0/edit?usp=drive_web](https://docs.google.com/document/d/1pZ6J8FRhrr8nTH8MmmvIrVORB-u4mcEbcm9Cwaqvsa0/edit?usp=drive_web)
 
 ---
 
@@ -34,7 +34,7 @@ Trong những tuần đầu năm học, tình trạng thiếu hụt sách giáo 
 
 ---
 
-## 🛠️ 3. Công Nghệ Sử Dụng (Prototype)
+## 🛠️ 3. Công Nghệ Sử Dụng (Web Prototype)
 
 Mô hình Web Demo được xây dựng theo tiêu chí tối giản, mượt mà và không phụ thuộc hạ tầng đắt đỏ:
 
@@ -51,4 +51,4 @@ Bạn có thể chạy thử trang web trên máy tính cá nhân mà không c�
 
 1. Clone repository này về máy:
    ```bash
-   git clone [https://github.com/](https://github.com/)<ten-user-github>/<ten-repository>.git
+   git clone [https://github.com/vtp3005/edushare_demo_26521567.git](https://github.com/vtp3005/edushare_demo_26521567.git)
