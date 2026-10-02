@@ -110,14 +110,14 @@
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Lớp / Trường</label>
-                            <input type="text" required placeholder="Lớp 10A1 - THPT Chuyên..." class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <input type="text" required placeholder="Lớp 11A1 - THPT Chuyên..." class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Sách Cần Mượn Ngắn Hạn (24h - 48h)</label>
                             <select class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
-                                <option>Bộ Sách Giáo Khoa Toán 10 (Bộ Cánh Diều)</option>
-                                <option>Bộ Sách Giáo Khoa Ngữ Văn 10 (Kết Nối Tri Thức)</option>
-                                <option>Bộ Sách Giáo Khoa Vật Lý 10 (Chân Trời Sáng Tạo)</option>
+                                <option>Bộ Sách Giáo Khoa Toán 11 (Bộ Cánh Diều)</option>
+                                <option>Bộ Sách Giáo Khoa Ngữ Văn 11 (Kết Nối Tri Thức)</option>
+                                <option>Bộ Sách Giáo Khoa Vật Lý 11 (Chân Trời Sáng Tạo)</option>
                             </select>
                         </div>
                         <button type="submit" class="w-full bg-blue-900 hover:bg-blue-800 text-white py-2.5 rounded-lg font-semibold transition">Xác Nhận Đăng Ký Mượn</button>
@@ -194,131 +194,362 @@
 
     <!-- Interactive Script -->
     <script>
-        // Sample database for dynamic demo content
+        // Database structured by Grade -> Subject -> Week
         const worksheetData = {
-            "Toán": {
-                "1": {
-                    title: "Mệnh Đề Và Tập Hợp (Trọng Tâm)",
-                    theory: [
-                        "<b>Mệnh đề:</b> Là phát biểu khẳng định đúng hoặc sai. Không thể vừa đúng vừa sai.",
-                        "<b>Mệnh đề phủ định:</b> Phủ định của mệnh đề P là P̅ (mệnh đề không P). Nếu P đúng thì P̅ sai."
-                    ],
-                    example: "Cho mệnh đề A: 'Phủ Lý là thủ phủ của tỉnh Hà Nam'. Mệnh đề phủ định A̅: 'Phủ Lý không phải là thủ phủ của tỉnh Hà Nam'.",
-                    exercises: [
-                        "1. Trong các phát biểu sau, đâu là mệnh đề toán học?",
-                        "2. Lập mệnh đề phủ định của phát biểu: 'Mọi số thực x đều có x² ≥ 0'."
-                    ]
+            "10": {
+                "Toán": {
+                    "1": {
+                        title: "Mệnh Đề Và Tập Hợp (Trọng Tâm)",
+                        theory: [
+                            "<b>Mệnh đề:</b> Là phát biểu khẳng định đúng hoặc sai. Không thể vừa đúng vừa sai.",
+                            "<b>Mệnh đề phủ định:</b> Phủ định của mệnh đề P là P̅ (mệnh đề không P). Nếu P đúng thì P̅ sai."
+                        ],
+                        example: "Cho mệnh đề A: 'Phủ Lý là thủ phủ của tỉnh Hà Nam'. Mệnh đề phủ định A̅: 'Phủ Lý không phải là thủ phủ của tỉnh Hà Nam'.",
+                        exercises: [
+                            "1. Trong các phát biểu sau, đâu là mệnh đề toán học?",
+                            "2. Lập mệnh đề phủ định của phát biểu: 'Mọi số thực x đều có x² ≥ 0'."
+                        ]
+                    },
+                    "2": {
+                        title: "Các Phép Toán Trên Tập Hợp",
+                        theory: [
+                            "<b>Giao của hai tập hợp (A ∩ B):</b> Tập hợp gồm các phần tử vừa thuộc A vừa thuộc B.",
+                            "<b>Hợp của hai tập hợp (A ∪ B):</b> Tập hợp gồm các phần tử thuộc A hoặc thuộc B."
+                        ],
+                        example: "Cho A = {1; 2; 3}, B = {3; 4}. Khi đó A ∩ B = {3}, A ∪ B = {1; 2; 3; 4}.",
+                        exercises: [
+                            "1. Cho A = {x ∈ ℝ | x < 3} và B = [1; 5]. Tìm A ∩ B và A ∪ B.",
+                            "2. Xác định các tập hợp con của tập hợp X = {a, b, c}."
+                        ]
+                    },
+                    "3": {
+                        title: "Bất Phương Trình Bậc Nhất Hai Ẩn",
+                        theory: [
+                            "<b>Dạng tổng quát:</b> ax + by < c (hoặc ≤, >, ≥) với a, b không đồng thời bằng 0.",
+                            "<b>Miền nghiệm:</b> Nửa mặt phẳng có bờ là đường thẳng ax + by = c."
+                        ],
+                        example: "Biểu diễn miền nghiệm của x + y ≤ 2 trên mặt phẳng tọa độ Oxy.",
+                        exercises: [
+                            "1. Xác định điểm M(1; 1) có thuộc miền nghiệm của 2x - 3y + 1 > 0 không?",
+                            "2. Vẽ miền nghiệm của hệ bất phương trình bậc nhất hai ẩn."
+                        ]
+                    }
                 },
-                "2": {
-                    title: "Các Phép Toán Trên Tập Hợp",
-                    theory: [
-                        "<b>Giao của hai tập hợp (A ∩ B):</b> Tập hợp gồm các phần tử vừa thuộc A vừa thuộc B.",
-                        "<b>Hợp của hai tập hợp (A ∪ B):</b> Tập hợp gồm các phần tử thuộc A hoặc thuộc B."
-                    ],
-                    example: "Cho A = {1; 2; 3}, B = {3; 4}. Khi đó A ∩ B = {3}, A ∪ B = {1; 2; 3; 4}.",
-                    exercises: [
-                        "1. Cho A = {x ∈ ℝ | x < 3} và B = [1; 5]. Tìm A ∩ B và A ∪ B.",
-                        "2. Xóa các phần tử trùng lặp trong hai tập hợp hợp lệ."
-                    ]
+                "Ngữ Văn": {
+                    "1": {
+                        title: "Cấu Trúc Tác Phẩm Sử Thi & Truyện Thần Thoại",
+                        theory: [
+                            "<b>Thần thoại:</b> Thể loại tự sự dân gian giải thích các hiện tượng tự nhiên và đời sống xã hội.",
+                            "<b>Cấu trúc cốt truyện:</b> Mở đầu khai phá - Thách thức thần linh - Kết thúc kiến tạo thế giới."
+                        ],
+                        example: "Phân tích hình tượng Thần Trụ Trời trong việc giải thích sự hình thành trời đất.",
+                        exercises: [
+                            "1. Nêu các đặc điểm không gian và thời gian trong thần thoại Việt Nam.",
+                            "2. Tóm tắt các sự kiện chính trong thần thoại 'Thần Trụ Trời'."
+                        ]
+                    },
+                    "2": {
+                        title: "Nghệ Thuật Xây Dựng Nhân Vật Trong Sử Thi",
+                        theory: [
+                            "<b>Nhân vật anh hùng sử thi:</b> Đại diện cho sức mạnh, danh dự và trí tuệ của cộng đồng.",
+                            "<b>Biện pháp nghệ thuật:</b> Phóng đại, so sánh trùng điệp, miêu tả hành động hoành tráng."
+                        ],
+                        example: "Đoạn trích 'Đăm Săn đi bắt Nữ Thần Mặt Trời' phản ánh khát vọng chinh phục thiên nhiên.",
+                        exercises: [
+                            "1. Cảm nhận của em về cảnh chiến đấu giữa Đăm Săn và Mtao Mxây.",
+                            "2. Phân tích tác dụng của biện pháp phóng đại trong văn bản."
+                        ]
+                    },
+                    "3": {
+                        title: "Viết Bài Văn Nghị Luận Về Tác Phẩm Văn Học",
+                        theory: [
+                            "<b>Mở bài:</b> Giới thiệu tác giả, tác phẩm và vấn đề nghị luận cốt lõi.",
+                            "<b>Thân bài:</b> Phân tích nội dung chủ đề, đặc sắc nghệ thuật và đánh giá giá trị tác phẩm."
+                        ],
+                        example: "Lập dàn ý phân tích nhân vật anh hùng Đăm Săn.",
+                        exercises: [
+                            "1. Viết đoạn văn mở bài phân tích nhân vật anh hùng Đăm Săn.",
+                            "2. Sửa lỗi logic trong luận điểm nghị luận văn học."
+                        ]
+                    }
                 },
-                "3": {
-                    title: "Bất Phương Trình Bậc Nhất Hai Ẩn",
-                    theory: [
-                        "<b>Dạng tổng quát:</b> ax + by < c (hoặc ≤, >, ≥) với a, b không đồng thời bằng 0.",
-                        "<b>Miền nghiệm:</b> Nửa mặt phẳng có bờ là đường thẳng ax + by = c."
-                    ],
-                    example: "Biểu diễn miền nghiệm của x + y ≤ 2 trên mặt phẳng tọa độ Oxy.",
-                    exercises: [
-                        "1. Xác định điểm M(1; 1) có thuộc miền nghiệm của 2x - 3y + 1 > 0 không?",
-                        "2. Vẽ miền nghiệm của hệ bất phương trình bậc nhất hai ẩn."
-                    ]
+                "Vật Lý": {
+                    "1": {
+                        title: "Mô Tả Chuyển Động & Tốc Độ, Vận Tốc",
+                        theory: [
+                            "<b>Độ dịch chuyển (d):</b> Đại lượng vectơ nối vị trí đầu và vị trí cuối của chuyển động.",
+                            "<b>Vận tốc trung bình (v):</b> v = Δd / Δt (khác với tốc độ trung bình = s / t)."
+                        ],
+                        example: "Một xe chạy từ A đến B dài 60km trong 1h, rồi quay lại A trong 1h. Tốc độ trung bình là 60km/h, nhưng vận tốc trung bình bằng 0.",
+                        exercises: [
+                            "1. Phân biệt sự khác nhau giữa quãng đường đi được và độ dịch chuyển.",
+                            "2. Tính tốc độ trung bình của người đi bộ trên quãng đường hai giai đoạn."
+                        ]
+                    },
+                    "2": {
+                        title: "Chuyển Động Biến Đổi Đều",
+                        theory: [
+                            "<b>Gia tốc (a):</b> a = (v - v₀) / t. Đặc trưng cho sự biến thiên nhanh chậm của vận tốc.",
+                            "<b>Công thức vận tốc:</b> v = v₀ + at; Công thức quãng đường: s = v₀t + ½at²."
+                        ],
+                        example: "Xe bắt đầu chuyển động nhanh dần đều từ trạng thái nghỉ với gia tốc a = 2 m/s². Sau 5s vận tốc v = 10 m/s.",
+                        exercises: [
+                            "1. Một ô tô đang chạy 18 m/s thì hãm phanh dừng lại sau 6s. Tính gia tốc hãm.",
+                            "2. Lập đồ thị vận tốc - thời gian của chuyển động thẳng biến đổi đều."
+                        ]
+                    },
+                    "3": {
+                        title: "Sự Rơi Tự Do",
+                        theory: [
+                            "<b>Đặc điểm:</b> Là sự rơi chỉ chịu tác dụng của trọng lực.",
+                            "<b>Gia tốc rơi tự do (g):</b> Tại Trái Đất g ≈ 9.8 m/s² (hoặc 10 m/s²)."
+                        ],
+                        example: "Thả rơi một vật từ độ cao h = 20m (lấy g = 10 m/s²). Thời gian rơi t = √(2h/g) = 2 giây.",
+                        exercises: [
+                            "1. Tính vận tốc chạm đất của vật rơi tự do từ độ cao 45m.",
+                            "2. So sánh sự rơi của tờ giấy phẳng và tờ giấy vo tròn trong không khí."
+                        ]
+                    }
                 }
             },
-            "Ngữ Văn": {
-                "1": {
-                    title: "Cấu Trúc Tác Phẩm Sử Thi & Truyện Thần Thoại",
-                    theory: [
-                        "<b>Thần thoại:</b> Thể loại tự sự dân gian giải thích các hiện tượng tự nhiên và đời sống xã hội.",
-                        "<b>Cấu trúc cốt truyện:</b> Mở đầu khai phá - Thách thức thần linh - Kết thúc kiến tạo thế giới."
-                    ],
-                    example: "Phân tích hình tượng Thần Trụ Trời trong việc giải thích sự hình thành trời đất.",
-                    exercises: [
-                        "1. Nêu các đặc điểm không gian và thời gian trong thần thoại Việt Nam.",
-                        "2. Tóm tắt các sự kiện chính trong thần thoại 'Thần Trụ Trời'."
-                    ]
+            "11": {
+                "Toán": {
+                    "1": {
+                        title: "Hàm Số Lượng Giác & Giá Trị Lượng Giác",
+                        theory: [
+                            "<b>Đường tròn lượng giác:</b> Đường tròn bán kính R = 1 tâm O(0,0). Trục tung là trục sin, trục hoành là trục cos.",
+                            "<b>Công thức cơ bản:</b> sin²x + cos²x = 1; tanx = sinx / cosx (với cosx ≠ 0)."
+                        ],
+                        example: "Tính sin(α) khi biết cos(α) = 3/5 và α thuộc góc phần tư thứ nhất (0 < α < π/2) ➔ sin(α) = 4/5.",
+                        exercises: [
+                            "1. Rút gọn biểu thức A = sin(π - x) + cos(π/2 - x).",
+                            "2. Tìm tập xác định của hàm số y = tan(2x)."
+                        ]
+                    },
+                    "2": {
+                        title: "Phương Trình Lượng Giác Cơ Bản",
+                        theory: [
+                            "<b>Phương trình sinx = sinα:</b> x = α + k2π hoặc x = π - α + k2π (k ∈ ℤ).",
+                            "<b>Phương trình cosx = cosα:</b> x = ±α + k2π (k ∈ ℤ)."
+                        ],
+                        example: "Giải phương trình sinx = 1/2 ➔ x = π/6 + k2π hoặc x = 5π/6 + k2π.",
+                        exercises: [
+                            "1. Giải phương trình cos(x + π/4) = 0.",
+                            "2. Tìm nghiệm thuộc khoảng (0; π) của phương trình tanx = 1."
+                        ]
+                    },
+                    "3": {
+                        title: "Dãy Số & Cấp Số Cộng",
+                        theory: [
+                            "<b>Cấp số cộng (CSC):</b> Dãy số uₙ trong đó uₙ₊₁ = uₙ + d (d là công sai).",
+                            "<b>Số hạng tổng quát:</b> uₙ = u₁ + (n - 1)d."
+                        ],
+                        example: "Cho CSC có u₁ = 2, d = 3. Số hạng thứ 5 là u₅ = 2 + 4×3 = 14.",
+                        exercises: [
+                            "1. Cho cấp số cộng có u₁ = -1, u₂ = 3. Tìm công sai d và u₁₀.",
+                            "2. Tính tổng 10 số hạng đầu tiên của cấp số cộng trên."
+                        ]
+                    }
                 },
-                "2": {
-                    title: "Nghệ Thuật Xây Dựng Nhân Vật Trong Sử Thi",
-                    theory: [
-                        "<b>Nhân vật anh hùng sử thi:</b> Đại diện cho sức mạnh, danh dự và trí tuệ của cộng đồng.",
-                        "<b>Biện pháp nghệ thuật:</b> Ph phóng đại, so sánh trùng điệp, miêu tả hành động hoành tráng."
-                    ],
-                    example: "Đoạn trích 'Đăm Săn đi bắt Nữ Thần Mặt Trời' phản ánh khát vọng chinh phục thiên nhiên.",
-                    exercises: [
-                        "1. Cảm nhận của em về cảnh chiến đấu giữa Đăm Săn và Mtao Mxây.",
-                        "2. Phân tích tác dụng của biện pháp phóng đại trong văn bản."
-                    ]
+                "Ngữ Văn": {
+                    "1": {
+                        title: "Thơ Trữ Tình Hiện Đại & Biện Pháp Tu Từ",
+                        theory: [
+                            "<b>Thơ trữ tình:</b> Bộc lộ cảm xúc, tâm tư trực tiếp của chủ thể trữ tình trước thiên nhiên, cuộc sống.",
+                            "<b>Yếu tố cấu thành:</b> Hình ảnh thơ, nhịp điệu, cấu tứ và ngôn từ nghệ thuật."
+                        ],
+                        example: "Phân tích tâm trạng của nhân vật trữ tình trong bài thơ 'Tây Tiến' (Quang Dũng).",
+                        exercises: [
+                            "1. Chỉ ra nét độc đáo trong cách sử dụng từ ngữ của thơ Mới.",
+                            "2. Viết đoạn văn cảm nhận về một hình ảnh thơ tiêu biểu trong bài 'Tây Tiến'."
+                        ]
+                    },
+                    "2": {
+                        title: "Nghệ Thuật Trào Phúng Trong Văn Xuôi Lớp 11",
+                        theory: [
+                            "<b>Nghệ thuật trào phúng:</b> Dùng tiếng cười để đả kích, phê phán các thói hư nết xấu trong xã hội.",
+                            "<b>Thủ pháp:</b> Phóng đại, mâu thuẫn trào phúng, ngôn ngữ mỉa mai, ngụ ý."
+                        ],
+                        example: "Xung đột trào phúng trong đoạn trích 'Hạnh phúc một tang gia' (Vũ Trọng Phụng).",
+                        exercises: [
+                            "1. Phân tích ý nghĩa trào phúng của nhan đề 'Hạnh phúc một tang gia'.",
+                            "2. Nêu nhận xét về bản chất của xã hội thượng lưu qua tác phẩm."
+                        ]
+                    },
+                    "3": {
+                        title: "Viết Văn Bản Nghị Luận Xã Hội Về Tư Tưởng Đạo Lý",
+                        theory: [
+                            "<b>Yêu cầu:</b> Giải thích khái niệm -> Phân tích biểu hiện -> Chứng minh bằng thực tế -> Đánh giá & Bài học.",
+                            "<b>Lưu ý:</b> Dẫn chứng phải chính xác, mang tính thời sự và có sức thuyết phục."
+                        ],
+                        example: "Nghị luận về ý nghĩa của tinh thần tự học trong kỷ nguyên số.",
+                        exercises: [
+                            "1. Lập dàn ý cho bài văn suy nghĩ về lòng trung thực.",
+                            "2. Viết đoạn văn khoảng 200 chữ về tầm quan trọng của sự tử tế."
+                        ]
+                    }
                 },
-                "3": {
-                    title: "Viết Bài Văn Nghị Luận Về Một Tác Phẩm Văn Học",
-                    theory: [
-                        "<b>Mở bài:</b> Giới thiệu tác giả, tác phẩm và vấn đề nghị luận cốt lõi.",
-                        "<b>Thân bài:</b> Phân tích nội dung chủ đề, đặc sắc nghệ thuật và đánh giá giá trị tác phẩm."
-                    ],
-                    example: "Lập dàn ý phân tích bài thơ 'Mùa thu về' của tác giả dân gian.",
-                    exercises: [
-                        "1. Viết đoạn văn mở bài phân tích nhân vật anh hùng Đăm Săn.",
-                        "2. Sửa lỗi logic trong luận điểm nghị luận văn học."
-                    ]
+                "Vật Lý": {
+                    "1": {
+                        title: "Dao Động Điều Hòa & Cắt Tóm Kiến Thức",
+                        theory: [
+                            "<b>Phương trình dao động:</b> x = A.cos(ωt + φ). Trong đó A là biên độ, ω là tần số góc, φ là pha ban đầu.",
+                            "<b>Vận tốc & Gia tốc:</b> v = -ωA.sin(ωt + φ); a = -ω²x."
+                        ],
+                        example: "Một vật dao động điều hòa x = 5cos(2πt) cm. Biên độ A = 5cm, tần số góc ω = 2π rad/s.",
+                        exercises: [
+                            "1. Xác định pha ban đầu và chu kỳ dao động của x = 4cos(10πt + π/3) cm.",
+                            "2. Tính vận tốc cực đại của vật dao động trên."
+                        ]
+                    },
+                    "2": {
+                        title: "Sóng Cơ & Sự Truyền Sóng Cơ",
+                        theory: [
+                            "<b>Sóng cơ:</b> Sự lan truyền dao động cơ trong môi trường vật chất.",
+                            "<b>Bước sóng (λ):</b> Quãng đường sóng truyền được trong 1 chu kỳ: λ = v.T = v / f."
+                        ],
+                        example: "Sóng có tần số f = 50Hz truyền với tốc độ v = 20m/s. Bước sóng λ = 20/50 = 0.4m = 40cm.",
+                        exercises: [
+                            "1. Phân biệt sóng dọc và sóng ngang.",
+                            "2. Tính tốc độ truyền sóng khi biết bước sóng λ = 2m và chu kỳ T = 0.5s."
+                        ]
+                    },
+                    "3": {
+                        title: "Sự Giao Thoa Sóng",
+                        theory: [
+                            "<b>Điều kiện giao thoa:</b> Hai nguồn kết hợp (cùng tần số và hiệu số pha không đổi theo thời gian).",
+                            "<b>Vị trí cực đại:</b> d₂ - d₁ = kλ (k ∈ ℤ); Vị trí cực tiểu: d₂ - d₁ = (k + 0.5)λ."
+                        ],
+                        example: "Hai nguồn kết hợp cùng pha phát sóng bước sóng λ = 3cm. Điểm M có d₁ = 12cm, d₂ = 18cm là cực đại giao thoa vì d₂ - d₁ = 6cm = 2λ.",
+                        exercises: [
+                            "1. Xác định số điểm cực đại trên đoạn thẳng nối hai nguồn sóng.",
+                            "2. Nêu ứng dụng của hiện tượng giao thoa sóng trong thực tiễn."
+                        ]
+                    }
                 }
             },
-            "Vật Lý": {
-                "1": {
-                    title: "Mô Tả Chuyển Động & Tốc Độ, Vận Tốc",
-                    theory: [
-                        "<b>Độ dịch chuyển (d):</b> Đại lượng vectơ nối vị trí đầu và vị trí cuối của chuyển động.",
-                        "<b>Vận tốc trung bình (v):</b> v = Δd / Δt (khác với tốc độ trung bình = s / t)."
-                    ],
-                    example: "Một xe chạy từ A đến B dài 60km trong 1h, rồi quay lại A trong 1h. Tốc độ trung bình là 60km/h, nhưng vận tốc trung bình bằng 0.",
-                    exercises: [
-                        "1. Phân biệt sự khác nhau giữa quãng đường đi được và độ dịch chuyển.",
-                        "2. Tính tốc độ trung bình của người đi bộ trên quãng đường hai giai đoạn."
-                    ]
+            "12": {
+                "Toán": {
+                    "1": {
+                        title: "Tính Đơn Điệu Của Hàm Số (Đồng Biến & Nghịch Biến)",
+                        theory: [
+                            "<b>Quy tắc xét tính đơn điệu:</b> Tính đạo hàm f'(x). Nếu f'(x) > 0 với mọi x ∈ (a, b) thì hàm số đồng biến trên (a, b).",
+                            "<b>Nếu f'(x) < 0:</b> Hàm số nghịch biến trên khoảng đó."
+                        ],
+                        example: "Xét y = x³ - 3x. Có y' = 3x² - 3 = 0 ⇔ x = ±1. Hàm số đồng biến trên (-∞; -1) và (1; +∞).",
+                        exercises: [
+                            "1. Tìm các khoảng đơn điệu của hàm số y = -x³ + 3x² - 1.",
+                            "2. Tìm m để hàm số y = x³ - mx² + 1 đồng biến trên ℝ."
+                        ]
+                    },
+                    "2": {
+                        title: "Giá Trị Lớn Nhất & Nhỏ Nhất Của Hàm Số",
+                        theory: [
+                            "<b>Cách tìm trên đoạn [a, b]:</b> 1. Tính f'(x), tìm nghiệm xᵢ ∈ (a, b). 2. Tính f(a), f(b), f(xᵢ). 3. Số lớn nhất là max, nhỏ nhất là min."
+                        ],
+                        example: "Tìm max/min của y = x² - 2x trên đoạn [0, 3]. f(0)=0, f(1)=-1, f(3)=3 ➔ Max = 3, Min = -1.",
+                        exercises: [
+                            "1. Tìm giá trị lớn nhất của y = x⁴ - 2x² + 3 trên [-1; 2].",
+                            "2. Giải bài toán tối ưu thực tế (chi phí nhỏ nhất)."
+                        ]
+                    },
+                    "3": {
+                        title: "Cực Trị Của Hàm Số",
+                        theory: [
+                            "<b>Điểm cực trị:</b> Là điểm x₀ mà tại đó f'(x) đổi dấu khi qua x₀.",
+                            "<b>Đổi dấu từ + sang -:</b> x₀ là điểm cực đại; <b>Từ - sang +:</b> x₀ là điểm cực tiểu."
+                        ],
+                        example: "Hàm số y = x³ - 3x có y' = 3(x - 1)(x + 1). Đổi dấu tại x = -1 (Cực đại) và x = 1 (Cực tiểu).",
+                        exercises: [
+                            "1. Tìm điểm cực trị của hàm số y = x⁴ - 4x² + 1.",
+                            "2. Tìm m để hàm số trùng phương có 3 điểm cực trị."
+                        ]
+                    }
                 },
-                "2": {
-                    title: "Chuyển Động Biến Đổi Đều",
-                    theory: [
-                        "<b>Gia tốc (a):</b> a = (v - v₀) / t. Đặc trưng cho sự biến thiên nhanh chậm của vận tốc.",
-                        "<b>Công thức vận tốc:</b> v = v₀ + at; Công thức quãng đường: s = v₀t + ½at²."
-                    ],
-                    example: "Xe bắt đầu chuyển động nhanh dần đều từ trạng thái nghỉ với gia tốc a = 2 m/s². Sau 5s vận tốc v = 10 m/s.",
-                    exercises: [
-                        "1. Một ô tô đang chạy 18 m/s thì hãm phanh dừng lại sau 6s. Tính gia tốc hãm.",
-                        "2. Lập đồ thị vận tốc - thời gian của chuyển động thẳng biến đổi đều."
-                    ]
+                "Ngữ Văn": {
+                    "1": {
+                        title: "Tác Phẩm Văn Học Hiện Đại Việt Nam Lớp 12",
+                        theory: [
+                            "<b>Xu hướng văn học:</b> Đổi mới tư duy nghệ thuật, nhìn nhận con người ở nhiều góc độ đời tư - thế sự.",
+                            "<b>Yêu cầu đọc hiểu:</b> Phân tích tình huống truyện, ngôn ngữ nhân vật và cảm hứng chủ đạo."
+                        ],
+                        example: "Phân tích tình huống truyện độc đáo trong tác phẩm 'Vợ nhặt' (Kim Lân).",
+                        exercises: [
+                            "1. Nêu ý nghĩa biểu tượng của hình ảnh con đường trong văn học.",
+                            "2. Phân tích giá trị nhân đạo của tác phẩm văn xuôi giai đoạn chống Pháp."
+                        ]
+                    },
+                    "2": {
+                        title: "Nghệ Thuật Xây Dựng Tình Huống Truyện",
+                        theory: [
+                            "<b>Tình huống truyện:</b> Sự kiện bộc lộ rõ nhất bản chất nhân vật và tư tưởng tác phẩm.",
+                            "<b>Các loại tình huống:</b> Tình huống tâm trạng, tình huống hành động, tình huống nhận thức."
+                        ],
+                        example: "Tình huống chiếc thuyền ngoài xa phản ánh khoảng cách giữa nghệ thuật và cuộc đời.",
+                        exercises: [
+                            "1. Phân tích sự thay đổi nhận thức của người nghệ sĩ phôi thai.",
+                            "2. Rút ra bài học về cách nhìn nhận con người trong cuộc sống."
+                        ]
+                    },
+                    "3": {
+                        title: "Nghị Luận Về Một Ý Kiến Bàn Về Văn Học",
+                        theory: [
+                            "<b>Quy trình:</b> Giải thích nhận định -> Phân tích chứng minh qua các tác phẩm -> Đánh giá nâng cao.",
+                            "<b>Yêu cầu:</b> Kiến thức lý luận văn học vững chắc, dẫn chứng thuyết phục."
+                        ],
+                        example: "Nghị luận về ý kiến: 'Tác phẩm nghệ thuật chân chính bao giờ cũng hướng con người tới cái Đẹp'.",
+                        exercises: [
+                            "1. Lập dàn ý bài văn nghị luận lý luận văn học.",
+                            "2. Viết đoạn văn phân tích chức năng nhận thức của văn học."
+                        ]
+                    }
                 },
-                "3": {
-                    title: "Sự Rơi Tự Do",
-                    theory: [
-                        "<b>Đặc điểm:</b> Là sự rơi chỉ chịu tác dụng của trọng lực.",
-                        "<b>Gia tốc rơi tự do (g):</b> Tại Trái Đất g ≈ 9.8 m/s² (hoặc 10 m/s²)."
-                    ],
-                    example: "Thả rơi một vật từ độ cao h = 20m (lấy g = 10 m/s²). Thời gian rơi t = √(2h/g) = 2 giây.",
-                    exercises: [
-                        "1. Tính vận tốc chạm đất của vật rơi tự do từ độ cao 45m.",
-                        "2. So sánh sự rơi của tờ giấy phẳng và tờ giấy vo tròn trong không khí."
-                    ]
+                "Vật Lý": {
+                    "1": {
+                        title: "Mô Hình Động Học Phân Tử Chất Khí",
+                        theory: [
+                            "<b>Thuyết động học phân tử:</b> Chất khí gồm các phân tử chuyển động hỗn loạn không ngừng.",
+                            "<b>Nhiệt độ & Động năng:</b> Nhiệt độ càng cao thì các phân tử chuyển động càng nhanh."
+                        ],
+                        example: "Giải thích áp suất khí lên thành bình là do sự va chạm của các phân tử khí.",
+                        exercises: [
+                            "1. Trình bày các nội dung cơ bản của thuyết động học phân tử chất khí.",
+                            "2. So sánh tính chất của chất khí, chất lỏng và chất rắn."
+                        ]
+                    },
+                    "2": {
+                        title: "Các Định Luật Khí Lý Tưởng (Boyle-Mariotte & Charles)",
+                        theory: [
+                            "<b>Định luật Boyle (Đẳng nhiệt):</b> p₁V₁ = p₂V₂ (Áp suất tỉ lệ nghịch với thể tích).",
+                            "<b>Định luật Charles (Đẳng áp):</b> V₁ / T₁ = V₂ / T₂."
+                        ],
+                        example: "Nén khí đẳng nhiệt từ thể tích 10 lít xuống 5 lít thì áp suất tăng gấp 2 lần.",
+                        exercises: [
+                            "1. Một khối khí có thể tích 4L ở p = 1atm. Nén đẳng nhiệt đến p = 2atm, tính V.",
+                            "2. Vẽ đồ thị trạng thái trong các hệ tọa độ (p,V), (V,T)."
+                        ]
+                    },
+                    "3": {
+                        title: "Phương Trình Trạng Thái Khí Lý Tưởng",
+                        theory: [
+                            "<b>Phương trình tổng quát:</b> (p₁V₁) / T₁ = (p₂V₂) / T₂ hay pV = nRT.",
+                            "<b>Trong đó:</b> R là hằng số khí lý tưởng R ≈ 8.31 J/(mol.K)."
+                        ],
+                        example: "Tính số mol khí ở điều kiện p = 1atm, V = 22.4L, T = 273K ➔ n ≈ 1 mol.",
+                        exercises: [
+                            "1. Tính khối lượng khí Oxy chứa trong bình có dung tích 10L ở 27°C, áp suất 2atm.",
+                            "2. Giải bài toán biến đổi trạng thái hai giai đoạn liên tiếp."
+                        ]
+                    }
                 }
             }
         };
 
         function showTab(tabName) {
-            // Hide all tabs
             document.getElementById('tab-worksheet').classList.add('hidden');
             document.getElementById('tab-edubank').classList.add('hidden');
             document.getElementById('tab-legal').classList.add('hidden');
 
-            // Reset nav button active styles
             const navIds = ['nav-worksheet', 'nav-edubank', 'nav-legal'];
             navIds.forEach(id => {
                 const btn = document.getElementById(id);
@@ -326,10 +557,8 @@
                 btn.classList.add('border-transparent');
             });
 
-            // Show selected tab
             document.getElementById('tab-' + tabName).classList.remove('hidden');
 
-            // Highlight selected nav button
             const activeBtn = document.getElementById('nav-' + tabName);
             activeBtn.classList.remove('border-transparent');
             activeBtn.classList.add('border-yellow-400', 'text-yellow-400', 'bg-blue-800/50');
@@ -340,17 +569,17 @@
             const subject = document.getElementById('subjectSelect').value;
             const week = document.getElementById('weekSelect').value;
 
-            // Update Badge and Title
+            // Update Badge Text
             document.getElementById('wsBadge').innerText = `${subject} Lớp ${grade} - Tuần ${week}`;
             
-            // Get content from sample database
-            const data = (worksheetData[subject] && worksheetData[subject][week]) 
-                ? worksheetData[subject][week] 
-                : worksheetData["Toán"]["1"];
+            // Get data according to Grade -> Subject -> Week
+            const data = (worksheetData[grade] && worksheetData[grade][subject] && worksheetData[grade][subject][week])
+                ? worksheetData[grade][subject][week]
+                : worksheetData["10"]["Toán"]["1"];
 
             document.getElementById('wsTitle').innerText = data.title;
 
-            // Generate HTML content dynamically
+            // Render HTML
             const contentBox = document.getElementById('wsContent');
             contentBox.innerHTML = `
                 <div>
@@ -388,7 +617,6 @@
             e.target.reset();
         }
 
-        // Initialize default view
         window.onload = function() {
             updateWorksheet();
         };
