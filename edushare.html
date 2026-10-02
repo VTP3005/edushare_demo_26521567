@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduShare - Hệ Thống Học Liệu Chuyển Tiếp Hợp Pháp</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+
+    <!-- Header Navigation -->
+    <header class="bg-blue-900 text-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-2 md:mb-0">
+                <i class="fa-solid font-bold text-yellow-400 text-3xl fa-book-open-reader"></i>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wide">EduShare</h1>
+                    <p class="text-xs text-blue-200">Hệ Thống Học Liệu Chuyển Tiếp & Tủ Sách Xoay Vòng</p>
+                </div>
+            </div>
+            <nav class="flex space-x-4 text-sm font-medium">
+                <button onclick="showTab('worksheet')" class="hover:text-yellow-400 transition py-1 px-2 border-b-2 border-transparent hover:border-yellow-400">Phiếu Học Tập</button>
+                <button onclick="showTab('edubank')" class="hover:text-yellow-400 transition py-1 px-2 border-b-2 border-transparent hover:border-yellow-400">Mượn Sách Cũ</button>
+                <button onclick="showTab('legal')" class="hover:text-yellow-400 transition py-1 px-2 border-b-2 border-transparent hover:border-yellow-400">Căn Cứ Pháp Lý</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="bg-blue-800 text-white py-8 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="bg-blue-700 text-yellow-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Giải pháp Chuyển tiếp 2-4 Tuần Đầu Năm Học</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold mt-3 mb-2">Đảm Bảo Học Tập Liên Tục - Tuân Thủ 100% Luật SHTT</h2>
+            <p class="text-blue-100 text-sm max-w-2xl mx-auto">Hỗ trợ học sinh tiếp cận kiến thức cốt lõi trong thời gian chờ nguồn sách giáo khoa chính thức được cung ứng đầy đủ.</p>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-5xl mx-auto px-4 py-8 flex-grow">
+
+        <!-- TAB 1: PHIẾU HỌC TẬP TUẦN -->
+        <div id="tab-worksheet" class="space-y-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center">
+                    <i class="fa-solid fa-file-lines text-blue-600 mr-2"></i> Tra Cứu Phiếu Học Tập Tuần
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Khối Lớp</label>
+                        <select id="gradeSelect" onchange="updateWorksheet()" class="w-full p-2 border rounded-lg text-sm bg-slate-50 focus:ring-2 focus:ring-blue-500">
+                            <option value="10">Khối Lớp 10</option>
+                            <option value="11">Khối Lớp 11</option>
+                            <option value="12">Khối Lớp 12</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Môn Học</label>
+                        <select id="subjectSelect" onchange="updateWorksheet()" class="w-full p-2 border rounded-lg text-sm bg-slate-50 focus:ring-2 focus:ring-blue-500">
+                            <option value="Toán">Toán Học</option>
+                            <option value="Ngữ Văn">Ngữ Văn</option>
+                            <option value="Vật Lý">Vật Lý</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Tuần Học Chuyển Tiếp</label>
+                        <select id="weekSelect" onchange="updateWorksheet()" class="w-full p-2 border rounded-lg text-sm bg-slate-50 focus:ring-2 focus:ring-blue-500">
+                            <option value="1">Tuần 1</option>
+                            <option value="2">Tuần 2</option>
+                            <option value="3">Tuần 3</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Worksheet Preview Card -->
+                <div class="border-2 border-dashed border-blue-200 rounded-lg p-6 bg-blue-50/50">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <span id="wsBadge" class="bg-blue-600 text-white text-xs px-2 py-1 rounded font-semibold">Toán Lớp 10 - Tuần 1</span>
+                            <h4 id="wsTitle" class="text-xl font-bold text-slate-800 mt-2">Mệnh Đề Và Tập Hợp (Trọng Tâm)</h4>
+                        </div>
+                        <button onclick="downloadSheet()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm px-4 py-2 rounded-lg font-medium flex items-center shadow transition">
+                            <i class="fa-solid fa-download mr-2"></i> Tải Phiếu PDF
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-4 text-sm text-slate-700 bg-white p-4 rounded-lg border">
+                        <div>
+                            <h5 class="font-bold text-blue-900 mb-1">I. Kiến Thức Cốt Lõi (Trích dẫn bài giảng):</h5>
+                            <ul class="list-disc list-inside space-y-1 pl-2 text-slate-600">
+                                <li><b>Mệnh đề:</b> Là một phát biểu khẳng định đúng hoặc sai. Không thể vừa đúng vừa sai.</li>
+                                <li><b>Mệnh đề phủ định:</b> Phủ định của mệnh đề $P$ là $\overline{P}$. Nếu $P$ đúng thì $\overline{P}$ sai.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-blue-900 mb-1">II. Ví Dụ Minh Họa:</h5>
+                            <p class="pl-2 italic text-slate-600">Ví dụ: Cho mệnh đề A: "Phủ Lý là thủ phủ của tỉnh Hà Nam". Mệnh đề phủ định $\overline{A}$: "Phủ Lý không phải là thủ phủ của tỉnh Hà Nam".</p>
+                        </div>
+                        <div>
+                            <h5 class="font-bold text-blue-900 mb-1">III. Bài Tập Tự Luyện (Giáo viên tự biên soạn):</h5>
+                            <p class="pl-2 text-slate-600">1. Trong các câu sau, câu nào là mệnh đề toán học?<br>2. Lập mệnh đề phủ định của phát biểu: "Mọi số thực x đều có $x^2 \ge 0$".</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3 italic">*Tài liệu biên soạn nội bộ phục vụ mục đích giảng dạy và học tập cá nhân theo Điểm c Khoản 1 Điều 25 Luật SHTT.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: ĐĂNG KÝ MƯỢN SÁCH CŨ (EDUBANK) -->
+        <div id="tab-edubank" class="space-y-6 hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Form Mượn Sách -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center">
+                        <i class="fa-solid fa-hand-holding-hand text-blue-600 mr-2"></i> Đăng Ký Mượn Sách Cũ Xoay Vòng
+                    </h3>
+                    <form onsubmit="handleBorrow(event)" class="space-y-4 text-sm">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Họ và Tên Học Sinh</label>
+                            <input type="text" required placeholder="Nguyễn Văn A" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Lớp / Trường</label>
+                            <input type="text" required placeholder="Lớp 10A1 - THPT Chuyên..." class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Sách Cần Mượn Ngắn Hạn (24h - 48h)</label>
+                            <select class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                                <option>Bộ Sách Giáo Khoa Toán 10 (Bộ Cánh Diều)</option>
+                                <option>Bộ Sách Giáo Khoa Ngữ Văn 10 (Kết Nối Tri Thức)</option>
+                                <option>Bộ Sách Giáo Khoa Vật Lý 10 (Chân Trời Sáng Tạo)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-900 hover:bg-blue-800 text-white py-2 rounded-lg font-semibold transition">Xác Nhận Đăng Ký Mượn</button>
+                    </form>
+                </div>
+
+                <!-- Form Quyên Góp Sách -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center">
+                        <i class="fa-solid fa-box-archive text-emerald-600 mr-2"></i> Quyên Góp / Cho Mượn Sách Cũ
+                    </h3>
+                    <p class="text-xs text-slate-600 mb-4">Chia sẻ bộ sách cũ của bạn cho học sinh khóa sau mượn trong thời gian chờ sách mới!</p>
+                    <form onsubmit="handleDonate(event)" class="space-y-4 text-sm">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Tên Người Trao Tặng</label>
+                            <input type="text" required placeholder="Cựu học sinh / Phụ huynh..." class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Số Lượng Bộ Sách Đóng Góp</label>
+                            <input type="number" min="1" value="1" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-semibold transition">Gửi Đăng Ký Trao Tặng</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: CĂN CỨ PHÁP LÝ -->
+        <div id="tab-legal" class="space-y-6 hidden">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="text-lg font-bold text-blue-900 mb-4 flex items-center">
+                    <i class="fa-solid fa-scale-balanced text-amber-600 mr-2"></i> Căn Cứ Pháp Lý (Điều 25 Luật SHTT 2022)
+                </h3>
+                <div class="space-y-4 text-sm text-slate-700">
+                    <div class="p-4 bg-amber-50 rounded-lg border border-amber-200">
+                        <h4 class="font-bold text-amber-900 mb-2">Các Trường Hợp Ngoại Lệ Không Phải Xin Phép & Không Phải Trả Tiền Bản Quyền:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-700">
+                            <li><b>Điểm a:</b> Tự sao chép một bản để nghiên cứu khoa học, học tập của cá nhân và không nhằm mục đích thương mại.</li>
+                            <li><b>Điểm c:</b> Trích dẫn hợp lý tác phẩm mà không làm sai ý tác giả để giảng dạy, minh họa trong bài giảng hoặc đề thi mà không nhằm mục đích thương mại.</li>
+                            <li><b>Điểm d:</b> Sử dụng tác phẩm trong hoạt động thư viện không nhằm mục đích thương mại (cho mượn bản gốc/lưu trữ).</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-blue-900 mb-2">Cổng Học Liệu Mở Chính Thức Của Các Nhà Xuất Bản:</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <a href="https://hanhtrangso.nxbgd.vn" target="_blank" class="p-3 border rounded-lg flex items-center hover:bg-slate-50 transition">
+                                <i class="fa-solid fa-globe text-blue-600 text-xl mr-3"></i>
+                                <div>
+                                    <p class="font-semibold text-xs">Hành Trang Số (NXB Giáo Dục)</p>
+                                    <p class="text-xs text-slate-500">hanhtrangso.nxbgd.vn</p>
+                                </div>
+                            </a>
+                            <a href="https://hoc10.vn" target="_blank" class="p-3 border rounded-lg flex items-center hover:bg-slate-50 transition">
+                                <i class="fa-solid fa-globe text-blue-600 text-xl mr-3"></i>
+                                <div>
+                                    <p class="font-semibold text-xs">Hoc10 (NXB Đại Học Sư Phạm)</p>
+                                    <p class="text-xs text-slate-500">hoc10.vn</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+        <p>Báo cáo Đề xuất Giải pháp Sơ tuyển AI Club UIT 2026 - Thí sinh: Võ Tấn Phát (MSSV: 26521567)</p>
+        <p class="mt-1 text-slate-500">Đại học Công nghệ Thông tin - ĐHQG TP.HCM</p>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        function showTab(tabName) {
+            document.getElementById('tab-worksheet').classList.add('hidden');
+            document.getElementById('tab-edubank').classList.add('hidden');
+            document.getElementById('tab-legal').classList.add('hidden');
+
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+        }
+
+        function updateWorksheet() {
+            const grade = document.getElementById('gradeSelect').value;
+            const subject = document.getElementById('subjectSelect').value;
+            const week = document.getElementById('weekSelect').value;
+
+            document.getElementById('wsBadge').innerText = `${subject} Lớp ${grade} - Tuần ${week}`;
+            document.getElementById('wsTitle').innerText = `Tóm Tắt Kiến Thức Cốt Lõi (${subject} - Tuần ${week})`;
+        }
+
+        function downloadSheet() {
+            alert('Đang tải xuống Phiếu Học Tập Tuần (Dạng PDF dung lượng nhẹ, hợp pháp)...');
+        }
+
+        function handleBorrow(e) {
+            e.preventDefault();
+            alert('Đăng ký mượn sách thành công! Vui lòng nhận sách tại Thư viện trường vào giờ ra chơi.');
+        }
+
+        function handleDonate(e) {
+            e.preventDefault();
+            alert('Cảm ơn đóng góp của bạn! Bộ phận Đoàn trường sẽ liên hệ tiếp nhận sách.');
+        }
+    </script>
+</body>
+</html>
