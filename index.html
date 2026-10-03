@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+    <!-- SweetAlert2 CDN cho Popup hoành tráng -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
     @media print {
         /* Ẩn bớt Header, Banner, Footer và các nút bấm khi lưu PDF */
@@ -617,14 +619,65 @@
 
         function handleBorrow(e) {
             e.preventDefault();
-            alert('Đăng ký mượn sách thành công! Vui lòng nhận sách tại Thư viện trường vào giờ ra chơi.');
-            e.target.reset();
+            const form = e.target;
+            const nameInput = form.querySelector('input[type="text"]').value || "Học sinh";
+            const bookSelect = form.querySelector('select').value;
+
+            // Popup hoành tráng khi Đăng ký Mượn Sách
+            Swal.fire({
+                title: '🎉 ĐĂNG KÝ THÀNH CÔNG!',
+                html: `
+                    <div class="text-left text-sm text-slate-700 space-y-3 mt-2">
+                        <p class="text-center font-medium text-slate-600">Cảm ơn em <b class="text-blue-900">${nameInput}</b> đã tham gia mô hình luân chuyển sách xoay vòng!</p>
+                        <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-900 space-y-1">
+                            <p>📚 <b>Sách mượn:</b> ${bookSelect}</p>
+                            <p>📍 <b>Địa điểm nhận:</b> Thư viện trường (Gặp Cán bộ Thư viện)</p>
+                            <p>⏰ <b>Thời gian:</b> Giờ ra chơi ngày làm việc tiếp theo</p>
+                        </div>
+                    </div>
+                `,
+                icon: 'success',
+                confirmButtonText: 'Đã Hiểu & Xóa Form',
+                confirmButtonColor: '#1e3a8a', // Màu blue-900
+                background: '#ffffff',
+                borderRadius: '1rem',
+                customClass: {
+                    popup: 'shadow-2xl border border-slate-100'
+                }
+            });
+
+            form.reset();
         }
 
         function handleDonate(e) {
             e.preventDefault();
-            alert('Cảm ơn đóng góp của bạn! Bộ phận Đoàn trường sẽ liên hệ tiếp nhận sách.');
-            e.target.reset();
+            const form = e.target;
+            const nameInput = form.querySelector('input[type="text"]').value || "Bạn";
+            const quantity = form.querySelector('input[type="number"]').value || 1;
+
+            // Popup hoành tráng khi Quyên Góp Sách
+            Swal.fire({
+                title: '❤️ CẢM ƠN TẤM LÒNG VÀNG!',
+                html: `
+                    <div class="text-left text-sm text-slate-700 space-y-3 mt-2">
+                        <p class="text-center font-medium text-slate-600">Hệ thống đã ghi nhận thông tin trao tặng từ <b class="text-emerald-700">${nameInput}</b>.</p>
+                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-900 space-y-1">
+                            <p>📦 <b>Số lượng đóng góp:</b> ${quantity} bộ sách giáo khoa cũ</p>
+                            <p>🤝 <b>Tiếp nhận:</b> Đại diện Đoàn Trường / Đội Thiếu Niên sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
+                        </div>
+                    </div>
+                `,
+                icon: 'success',
+                confirmButtonText: 'Tuyệt Vời!',
+                confirmButtonColor: '#059669', // Màu emerald-600
+                background: '#ffffff',
+                borderRadius: '1rem',
+                customClass: {
+                    popup: 'shadow-2xl border border-slate-100'
+                }
+            });
+
+            form.reset();
         }
 
         window.onload = function() {
