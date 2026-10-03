@@ -1,0 +1,19 @@
+/* Styling Tối Ưu Bản In PDF Cho EduShare */
+@media print {
+    header, section, footer, button, select, label, .no-print {
+        display: none !important;
+    }
+    body {
+        background-color: white !important;
+        color: black !important;
+    }
+    main {
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .border-dashed {
+        border: none !important;
+    }
+}
