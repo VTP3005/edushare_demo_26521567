@@ -146,39 +146,41 @@
                     <form onsubmit="handleBorrow(event)" class="space-y-4 text-sm">
                         <div>
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Họ và Tên Học Sinh</label>
-                            <input type="text" required placeholder="Nguyễn Văn A" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <input type="text" id="borrowName" required placeholder="Nguyễn Văn A" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-1">Lớp / Trường Học</label>
-                            <input type="text" required placeholder="Ví dụ: Lớp 10A1 - Trường THPT..." class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Lớp / Trường Học <span class="text-red-500 font-normal">(Cú pháp: Lớp... - Trường...)</span></label>
+                            <input type="text" id="borrowClassSchool" required placeholder="Lớp 10A1 - THPT Nguyễn Trãi" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+                            <p class="text-[11px] text-slate-500 mt-1">Lưu ý: Bắt buộc chứa tên Lớp, dấu gạch ngang '-' và tên Trường.</p>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-1">Sách Cần Mượn Ngắn Hạn (24h - 48h)</label>
-                            <select class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-white text-sm">
-                                <optgroup label="🌱 BỘ SÁCH TIỂU HỌC (LỚP 1 - 5)">
-                                    <option>Bộ SGK Lớp 1 (Kết Nối Tri Thức / Cánh Diều)</option>
-                                    <option>Bộ SGK Lớp 2 (Kết Nối Tri Thức / Cánh Diều)</option>
-                                    <option>Bộ SGK Lớp 3 (Chân Trời Sáng Tạo / Cánh Diều)</option>
-                                    <option>Bộ SGK Lớp 4 (Kết Nối Tri Thức / Cánh Diều)</option>
-                                    <option>Bộ SGK Lớp 5 (Chân Trời Sáng Tạo / Cánh Diều)</option>
-                                </optgroup>
-                                <optgroup label="🌿 BỘ SÁCH THCS (LỚP 6 - 9)">
-                                    <option>Bộ SGK Lớp 6 (Kết Nối Tri Thức / Cánh Diều)</option>
-                                    <option>Bộ SGK Lớp 7 (Chân Trời Sáng Tạo / Cánh Diều)</option>
-                                    <option>Bộ SGK Lớp 8 (Cánh Diều / Kết Nối Tri Thức)</option>
-                                    <option>Bộ SGK Lớp 9 (Kết Nối Tri Thức / Cánh Diều)</option>
-                                </optgroup>
-                                <optgroup label="🌳 BỘ SÁCH THPT (LỚP 10 - 12)">
-                                    <option>Bộ SGK Lớp 10 KHTN (Cánh Diều / Kết Nối Tri Thức)</option>
-                                    <option>Bộ SGK Lớp 10 KHXH (Lịch Sử, Địa Lý, GDKT & PL)</option>
-                                    <option>Bộ SGK Lớp 11 KHTN (Chân Trời Sáng Tạo / Cánh Diều)</option>
-                                    <option>Bộ SGK Lớp 11 KHXH (Lịch Sử, Địa Lý, GDKT & PL)</option>
-                                    <option>Bộ SGK Lớp 12 KHTN (Kết Nối Tri Thức / Cánh Diều)</option>
-                                    <option>Bộ SGK Lớp 12 KHXH (Lịch Sử, Địa Lý, GDKT & PL)</option>
-                                </optgroup>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Bộ Sách Giáo Khoa Cần Mượn</label>
+                            <select id="borrowSeries" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-white text-sm">
+                                <option value="Bộ Sách Cánh Diều">Bộ Sách Cánh Diều</option>
+                                <option value="Bộ Sách Kết Nối Tri Thức Với Cuộc Sống">Bộ Sách Kết Nối Tri Thức Với Cuộc Sống</option>
+                                <option value="Bộ Sách Chân Trời Sáng Tạo">Bộ Sách Chân Trời Sáng Tạo</option>
+                                <option value="Bộ Sách Tổng Hợp / Cánh Diều & Kết Nối">Bộ Sách Tổng Hợp Khác</option>
                             </select>
                         </div>
-                        <button type="submit" class="w-full bg-blue-900 hover:bg-blue-800 text-white py-2.5 rounded-lg font-semibold transition">Xác Nhận Đăng Ký Mượn</button>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-2">Chọn Các Môn Cần Mượn (Có thể chọn nhiều môn):</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 bg-slate-50 p-3 rounded-lg border text-xs text-slate-700">
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Toán" class="rounded text-blue-600"> <span>Toán Học</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Ngữ Văn" class="rounded text-blue-600"> <span>Ngữ Văn</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Vật Lý" class="rounded text-blue-600"> <span>Vật Lý</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Hóa Học" class="rounded text-blue-600"> <span>Hóa Học</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Sinh Học" class="rounded text-blue-600"> <span>Sinh Học</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Lịch Sử" class="rounded text-blue-600"> <span>Lịch Sử</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Địa Lý" class="rounded text-blue-600"> <span>Địa Lý</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="GDKT & PL" class="rounded text-blue-600"> <span>GDKT & PL</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Tin Học" class="rounded text-blue-600 font-semibold text-blue-800"> <span>💻 Tin Học</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Âm Nhạc" class="rounded text-blue-600"> <span>🎵 Âm Nhạc</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Mĩ Thuật" class="rounded text-blue-600"> <span>🎨 Mĩ Thuật</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="GDTC" class="rounded text-blue-600"> <span>⚽ GDTC (Thể Dục)</span></label>
+                                <label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" name="borrowSubject" value="Tiếng Anh" class="rounded text-blue-600"> <span>Tiếng Anh</span></label>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-900 hover:bg-blue-800 text-white py-2.5 rounded-lg font-semibold transition shadow">Xác Nhận Đăng Ký Mượn</button>
                     </form>
                 </div>
 
@@ -197,7 +199,7 @@
                             <label class="block text-xs font-semibold text-slate-600 mb-1">Số Lượng Bộ Sách Đóng Góp</label>
                             <input type="number" min="1" value="1" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
                         </div>
-                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-lg font-semibold transition">Gửi Đăng Ký Trao Tặng</button>
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-lg font-semibold transition shadow">Gửi Đăng Ký Trao Tặng</button>
                     </form>
                 </div>
             </div>
@@ -246,73 +248,30 @@
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
-        <p>Đề xuất Giải pháp Đề tài Sơ tuyển AI Club UIT 2026 - Sinh viên: Võ Tấn Phát (MSSV: 26521567)</p>
-        <p class="mt-1 text-slate-500">Trường Đại học Công nghệ Thông tin - ĐHQG TP.HCM</p>
+        <p>Báo cáo Đề xuất Giải pháp Sơ tuyển AI Club UIT 2026 - Thí sinh: Võ Tấn Phát (MSSV: 26521567)</p>
+        <p class="mt-1 text-slate-500">Đại học Công nghệ Thông tin - ĐHQG TP.HCM</p>
     </footer>
 
     <!-- Interactive Script -->
     <script>
-        // Mapping Subjects per Education Level (Bổ sung đầy đủ KHTN & KHXH)
+        // Mapping Subjects per Education Level (Bổ sung Tin Học & Môn Năng Khiếu)
         const subjectOptionsMap = {
-            "primary": ["Toán", "Tiếng Việt", "Tự Nhiên & Xã Hội", "Tiếng Anh"],
-            "secondary": ["Toán", "Ngữ Văn", "Khoa Học Tự Nhiên", "Lịch Sử & Địa Lý", "GDCD", "Tiếng Anh"],
-            "high": ["Toán", "Ngữ Văn", "Vật Lý", "Hóa Học", "Sinh Học", "Lịch Sử", "Địa Lý", "GDKT & Pháp Luật", "Tiếng Anh"]
+            "primary": ["Toán", "Tiếng Việt", "Tự Nhiên & Xã Hội", "Tin Học", "Âm Nhạc", "Mĩ Thuật", "GDTC", "Tiếng Anh"],
+            "secondary": ["Toán", "Ngữ Văn", "Khoa Học Tự Nhiên", "Lịch Sử & Địa Lý", "GDCD", "Tin Học", "Âm Nhạc", "Mĩ Thuật", "GDTC", "Tiếng Anh"],
+            "high": ["Toán", "Ngữ Văn", "Vật Lý", "Hóa Học", "Sinh Học", "Lịch Sử", "Địa Lý", "GDKT & Pháp Luật", "Tin Học", "Âm Nhạc", "Mĩ Thuật", "GDTC", "Tiếng Anh"]
         };
 
         // Full Database for All Grades (1 to 12)
         const worksheetData = {
-            // CẤP TIỂU HỌC (1-5)
-            "1": {
-                "Toán": { "1": { title: "Các Số Từ 0 Đến 10 (Toán 1)", theory: ["<b>Nhận biết số:</b> Tập đếm số lượng vật thể từ 1 đến 10.", "<b>So sánh:</b> Bằng nhau, nhiều hơn, ít hơn."], example: "Có 3 quả táo và 2 quả cam. Số táo nhiều hơn số cam.", exercises: ["1. Đếm số con vật trong hình vẽ.", "2. Điền dấu >, <, = thích hợp vào chỗ chấm: 5 ... 3."] } },
-                "Tiếng Việt": { "1": { title: "Nét Cong & Nhận Biết Âm A, B (Tiếng Việt 1)", theory: ["<b>Tập viết nét:</b> Nét hở, nét cong kín, nét thẳng.", "<b>Nhận diện âm:</b> Phát âm chuẩn âm A (bà), âm B (bê)."], example: "Tiếng 'bà' gồm âm b đứng trước, âm a đứng sau và thanh huyền.", exercises: ["1. Tập tô nét cong hở trái và cong kín.", "2. Tìm 3 từ chứa âm 'a'."] } }
-            },
-            "2": {
-                "Toán": { "1": { title: "Phép Cộng Có Nhớ Trong Phạm Vi 100 (Toán 2)", theory: ["<b>Cộng có nhớ:</b> Thực hiện cộng từ hàng đơn vị sang hàng chục.", "<b>Cấu tạo số:</b> Số có 2 chữ số gồm số chục và số đơn vị."], example: "Đặt tính rồi tính: 28 + 5 = 33.", exercises: ["1. Tính: 47 + 8; 59 + 6.", "2. Lớp 2A có 18 bạn nam và 15 bạn nữ. Hỏi lớp có tất cả bao nhiêu bạn?"] } }
-            },
-            "3": {
-                "Toán": { "1": { title: "Bảng Nhân 6, Bảng Nhân 7 (Toán 3)", theory: ["<b>Phép nhân:</b> Tích của phép nhân là tổng của các số hạng bằng nhau.", "<b>Bảng nhân 6 & 7:</b> Học thuộc lòng để tính nhẩm."], example: "6 x 4 = 24 (tương đương 6 + 6 + 6 + 6 = 24).", exercises: ["1. Tính nhẩm: 6 x 7; 7 x 8; 6 x 9.", "2. Mỗi hộp có 6 cái bánh. Hỏi 5 hộp có bao nhiêu cái bánh?"] } }
-            },
-            "4": {
-                "Toán": { "1": { title: "Số Có Sáu Chữ Số & Lớp Triệu (Toán 4)", theory: ["<b>Các hàng và lớp:</b> Lớp đơn vị, Lớp nghìn, Lớp triệu.", "<b>Giá trị chữ số:</b> Xác định giá trị dựa theo vị trí hàng."], example: "Số 325 410 có chữ số 3 thuộc hàng trăm nghìn.", exercises: ["1. Đọc số: 1 250 400.", "2. Viết số gồm: 5 triệu, 3 trăm nghìn và 8 đơn vị."] } }
-            },
-            "5": {
-                "Toán": { "1": { title: "Khái Niệm Số Thập Phân (Toán 5)", theory: ["<b>Số thập phân:</b> Gồm phần nguyên và phần thập phân phân cách bởi dấu phẩy.", "<b>Hàng số thập phân:</b> Hàng phần mười, phần trăm, phần nghìn."], example: "Số 8,25 có 8 là phần nguyên, 25 là phần thập phân.", exercises: ["1. Chuyển phân số thập phân 45/100 thành số thập phân.", "2. Viết số thập phân có 5 đơn vị, 3 phần mười."] } }
-            },
-
-            // CẤP THCS (6-9)
-            "6": {
-                "Toán": { "1": { title: "Tập Hợp Số Tự Nhiên (Toán 6)", theory: ["<b>Tập hợp ℕ và ℕ*:</b> ℕ = {0, 1, 2, 3...}, ℕ* = {1, 2, 3...}", "<b>Phần tử thuộc tập hợp:</b> Ký hiệu ∈ (thuộc) và ∉ (không thuộc)."], example: "Cho A = {1; 2; 3}. Ta có 1 ∈ A, 5 ∉ A.", exercises: ["1. Viết tập hợp B các số tự nhiên nhỏ hơn 6.", "2. Liệt kê các phần tử của tập hợp C = {x ∈ ℕ | 2 < x ≤ 7}."] } },
-                "Lịch Sử & Địa Lý": { "1": { title: "Chuyển Động Tự Quay Quanh Trục Của Trái Đất (Địa Lý 6)", theory: ["<b>Hướng quay:</b> Trái Đất tự quay quanh trục theo hướng từ Tây sang Đông.", "<b>Hệ quả:</b> Hiện tượng ngày và đêm luân phiên nhau trên Trái Đất."], example: "Do Trái Đất hình cầu và tự quay quanh trục nên các địa điểm khác nhau có giờ khác nhau.", exercises: ["1. Giải thích vì sao có hiện tượng ngày và đêm luân phiên.", "2. Tính giờ ở Hà Nội khi biết giờ GMT."] } }
-            },
-            "7": {
-                "Toán": { "1": { title: "Tập Hợp Các Số Hữu Tỉ ℚ (Toán 7)", theory: ["<b>Số hữu tỉ:</b> Là số viết được dưới dạng phân số a/b (a, b ∈ ℤ, b ≠ 0).", "<b>Cộng trừ số hữu tỉ:</b> Quy đồng mẫu số rồi thực hiện tính toán."], example: "Số 0.5 = 1/2 là một số hữu tỉ.", exercises: ["1. Biểu diễn số hữu tỉ -2/3 trên trục số.", "2. Tính: (-1/3) + (2/5)."] } }
-            },
-            "8": {
-                "Toán": { "1": { title: "Hằng Đẳng Thức Đáng Nhớ (Toán 8)", theory: ["<b>7 Hằng đẳng thức:</b> Bình phương một tổng, bình phương một hiệu...", "<b>Công thức:</b> (a + b)² = a² + 2ab + b²."], example: "Khai triển (x + 2)² = x² + 4x + 4.", exercises: ["1. Khai triển: (2x - 3)².", "2. Rút gọn biểu thức: A = (x - 1)(x + 1) - x²."] } }
-            },
-            "9": {
-                "Toán": { "1": { title: "Căn Bậc Hai & Hằng Đẳng Thức √A² = |A| (Toán 9)", theory: ["<b>Căn bậc hai số học:</b> √a (với a ≥ 0) là số x ≥ 0 sao cho x² = a.", "<b>Hằng đẳng thức:</b> √A² = |A|."], example: "√( -3 )² = |-3| = 3.", exercises: ["1. Tính: √16 + √81.", "2. Giải phương trình: √(x - 2)² = 5."] } }
-            },
-
-            // CẤP THPT (10-12)
             "10": {
-                "Toán": { "1": { title: "Mệnh Đề Và Tập Hợp (Toán 10)", theory: ["<b>Mệnh đề:</b> Là phát biểu khẳng định đúng hoặc sai.", "<b>Mệnh đề phủ định:</b> Phủ định của P là P̅."], example: "Cho P: 'Phủ Lý là thủ phủ Hà Nam'. P̅: 'Phủ Lý không phải thủ phủ Hà Nam'.", exercises: ["1. Xác định tính đúng sai của mệnh đề.", "2. Lập mệnh đề phủ định."] } },
+                "Toán": { "1": { title: "Mệnh Đề Và Tập Hợp (Toán 10)", theory: ["<b>Mệnh đề:</b> Phát biểu khẳng định đúng hoặc sai.", "<b>Mệnh đề phủ định:</b> Phủ định của P là P̅."], example: "Cho P: 'Phủ Lý là thủ phủ Hà Nam'. P̅: 'Phủ Lý không phải thủ phủ Hà Nam'.", exercises: ["1. Xác định tính đúng sai của mệnh đề.", "2. Lập mệnh đề phủ định."] } },
                 "Ngữ Văn": { "1": { title: "Sử Thi & Thần Thoại Dân Gian (Ngữ Văn 10)", theory: ["<b>Sử thi:</b> Tác phẩm tự sự quy mô lớn kể về sự kiện trọng đại.", "<b>Nghệ thuật:</b> Phóng đại, so sánh trùng điệp."], example: "Sức mạnh phi thường của Đăm Săn trong chiến đấu.", exercises: ["1. Phân tích nghệ thuật so sánh trong sử thi Đăm Săn.", "2. Nêu ý nghĩa bài học."] } },
-                "Lịch Sử": { "1": { title: "Hiện Thực Lịch Sử & Lịch Sử Được Con Người Nhận Thức (Lịch Sử 10)", theory: ["<b>Hiện thực lịch sử:</b> Là tất cả những gì đã diễn ra trong quá khứ, tồn tại khách quan.", "<b>Lịch sử được nhận thức:</b> Là những hiểu biết của con người về hiện thực lịch sử."], example: "Trận chiến Bạch Đằng 938 là hiện thực lịch sử; các cuốn sách ghi chép lại trận đánh là lịch sử được nhận thức.", exercises: ["1. Phân biệt hiện thực lịch sử và lịch sử được nhận thức.", "2. Vì sao lịch sử được nhận thức có thể thay đổi theo thời gian?"] } },
-                "Địa Lý": { "1": { title: "Mặt Trời & Trái Đất - Hệ Mặt Trời (Địa Lý 10)", theory: ["<b>Hệ Mặt Trời:</b> Gồm Mặt Trời ở trung tâm và 8 hành tinh chuyển động xung quanh.", "<b>Chuyển động tự quay:</b> Sinh ra lực Coriolis làm lệch hướng chuyển động của các vật thể."], example: "Ở Bắc bán cầu, các vật thể chuyển động bị lệch hướng về bên phải theo hướng chuyển động.", exercises: ["1. Trình bày tác động của lực Coriolis đối với dòng chảy của sông.", "2. Giải thích hiện tượng ngày đêm dài ngắn theo mùa."] } },
-                "GDKT & Pháp Luật": { "1": { title: "Thị Trường & Cơ Chế Thị Trường (GDKT & PL 10)", theory: ["<b>Thị trường:</b> Tổng hòa các quan hệ kinh tế trong đó người mua và người bán tác động lẫn nhau.", "<b>Cơ chế thị trường:</b> Hệ thống các quan hệ kinh tế tự điều tiết cân bằng cung - cầu."], example: "Giá cả hàng hóa tăng khi nhu cầu người mua tăng cao hơn khả năng cung ứng.", exercises: ["1. Nêu các chức năng cơ bản của thị trường.", "2. Lấy ví dụ về sự tác động của quy luật cung cầu trong thực tế."] } }
-            },
-            "11": {
-                "Toán": { "1": { title: "Hàm Số Lượng Giác & Giá Trị Lượng Giác (Toán 11)", theory: ["<b>Đường tròn lượng giác:</b> Bán kính R = 1. Trục tung là sin, trục hoành là cos.", "<b>Công thức:</b> sin²x + cos²x = 1."], example: "Biết cosα = 3/5 (0 < α < π/2) ➔ sinα = 4/5.", exercises: ["1. Rút gọn biểu thức lượng giác.", "2. Tìm tập xác định y = tanx."] } },
-                "Lịch Sử": { "1": { title: "Cải Cách Kinh Tế & Xã Hội Trong Lịch Sử Việt Nam (Lịch Sử 11)", theory: ["<b>Các cuộc cải cách lớn:</b> Cải cách của Hồ Quý Ly, Lê Thánh Tông, Minh Mạng.", "<b>Ý nghĩa:</b> Góp phần củng cố bộ máy hành chính và phát triển đất nước."], example: "Cải cách hành chính thời vua Minh Mạng chia cả nước thành 30 tỉnh và 1 phủ Thừa Thiên.", exercises: ["1. Đánh giá bài học kinh nghiệm từ cuộc cải cách thời Lê Thánh Tông.", "2. Tóm tắt nội dung chính trong chính sách của Hồ Quý Ly."] } },
-                "Địa Lý": { "1": { title: "Sự Phát Triển Kinh Tế Xã Hội Các Khu Vực Trên Thế Giới (Địa Lý 11)", theory: ["<b>Phân loại phát triển:</b> Nhóm nước phát triển và nhóm nước đang phát triển.", "<b>Chỉ số HDI:</b> Đánh giá dựa trên thu nhập, tuổi thọ và trình độ học vấn."], example: "Các nước phát triển thường có giá trị HDI cao từ 0.800 trở lên.", exercises: ["1. So sánh cơ cấu GDP giữa nhóm nước phát triển và đang phát triển.", "2. Phân tích tác động của toàn cầu hóa kinh tế."] } },
-                "GDKT & Pháp Luật": { "1": { title: "Cạnh Tranh & Cung Cầu Trong Kinh Tế Thị Trường (GDKT & PL 11)", theory: ["<b>Cạnh tranh:</b> Sự ghen đua giữa các chủ thể kinh tế nhằm giành giật điều kiện thuận lợi.", "<b>Cung - Cầu:</b> Mối quan hệ giữa số lượng hàng hóa bán ra và nhu cầu mua."], example: "Cạnh tranh lành mạnh giúp người tiêu dùng mua được sản phẩm chất lượng với giá tốt hơn.", exercises: ["1. Phân biệt cạnh tranh lành mạnh và cạnh tranh không lành mạnh.", "2. Phân tích vai trò của luật cạnh tranh."] } }
-            },
-            "12": {
-                "Toán": { "1": { title: "Tính Đơn Điệu Của Hàm Số (Toán 12)", theory: ["<b>Quy tắc:</b> Xét dấu đạo hàm f'(x). f'(x) > 0 ➔ Đồng biến.", "<b>Nếu f'(x) < 0:</b> Hàm số nghịch biến."], example: "y = x³ - 3x ➔ y' = 3x² - 3 = 0 ⇔ x = ±1.", exercises: ["1. Tìm khoảng đơn điệu y = -x³ + 3x².", "2. Tìm m để hàm số đồng biến trên ℝ."] } },
-                "Lịch Sử": { "1": { title: "Thế Giới Sau Chiến Tranh Lạnh & Xu Thế Phát Triển (Lịch Sử 12)", theory: ["<b>Trật tự đa cực:</b> Sự vươn lên của các trung tâm kinh tế lớn (Mỹ, EU, Nhật Bản, Trung Quốc).", "<b>Xu thế hòa hoãn:</b> Lấy phát triển kinh tế làm trọng tâm."], example: "Thành lập ASEAN là minh chứng cho sự hợp tác liên kết khu vực.", exercises: ["1. Trình bày các đặc điểm chính của xu thế toàn cầu hóa.", "2. Thời cơ và thách thức đối với Việt Nam trong hội nhập quốc tế."] } },
-                "Địa Lý": { "1": { title: "Vị Trí Địa Lý & Phạm Vi Lãnh Thổ Việt Nam (Địa Lý 12)", theory: ["<b>Vị trí:</b> Rìa phía Đông bán đảo Đông Dương, trung tâm khu vực Đông Nam Á.", "<b>Ý nghĩa:</b> Quy định thiên nhiên mang tính chất nhiệt đới ẩm gió mùa."], example: "Đường bờ biển dài 3260 km tạo điều kiện phát triển kinh tế biển.", exercises: ["1. Phân tích ảnh hưởng của vị trí địa lý đến khí hậu Việt Nam.", "2. Trình bày ý nghĩa chiến lược của vùng biển nước ta."] } },
-                "GDKT & Pháp Luật": { "1": { title: "Quyền Bình Đẳng Của Công Dân Trước Pháp Luật (GDKT & PL 12)", theory: ["<b>Bình đẳng về quyền và nghĩa vụ:</b> Mọi công dân đều hưởng quyền và thực hiện nghĩa vụ theo luật định.", "<b>Bình đẳng về trách nhiệm pháp lý:</b> Bất kỳ ai vi phạm đều bị xử lý theo pháp luật."], example: "Không phân biệt giới tính, dân tộc, địa vị xã hội khi tham gia bầu cử.", exercises: ["1. Nêu ví dụ về quyền bình đẳng của công dân trong kinh doanh.", "2. Phân tích ý nghĩa của sự bình đẳng trước pháp luật đối với xã hội."] } }
+                "Tin Học": { "1": { title: "Thông Tin Và Xử Lý Thông Tin (Tin Học 10)", theory: ["<b>Khái niệm thông tin:</b> Dữ liệu sau khi được xử lý mang lại hiểu biết cho con người.", "<b>Quá trình xử lý:</b> Thu nhận ➔ Xử lý ➔ Lưu trữ ➔ Truyền tải thông tin."], example: "Dữ liệu nhiệt độ 37.5°C sau khi xử lý thành thông tin: Cảnh báo sốt nhẹ.", exercises: ["1. Phân biệt sự khác nhau giữa dữ liệu và thông tin.", "2. Trình bày các thành phần cơ bản của hệ thống máy tính."] } },
+                "Âm Nhạc": { "1": { title: "Lý Thuyết Âm Nhạc Cơ Bản & Đọc Nhạc (Âm Nhạc 10)", theory: ["<b>Lý thuyết âm nhạc:</b> Nhận biết các nốt nhạc trên khuông nhạc và các giá trị nốt.", "<b>Hát tập thể:</b> Luyện hơi, phát âm chuẩn xác và giữ đúng nhịp."], example: "Nốt Đô nằm ở dòng kẻ phụ thứ nhất bên dưới khuông nhạc khóa Sol.", exercises: ["1. Đọc tên các nốt nhạc trên khuông nhạc khóa Sol.", "2. Tập vỗ tay theo tiết tấu phách 2/4."] } },
+                "Mĩ Thuật": { "1": { title: "Nghệ Thuật Tạo Hình & Bố Cục (Mĩ Thuật 10)", theory: ["<b>Yếu tố hình họa:</b> Đường nét, hình khối, màu sắc và ánh sáng trong tạo hình.", "<b>Nguyên lý bố cục:</b> Cân bằng, tương phản, nhịp điệu và điểm nhấn."], example: "Sử dụng cặp màu tương phản (Đỏ - Xanh lá) để tạo điểm nhấn nổi bật cho bức tranh.", exercises: ["1. Trình bày các bước phác thảo một bức tranh phong cảnh.", "2. Phân biệt bố cục đối xứng và bố cục tự do."] } },
+                "Lịch Sử": { "1": { title: "Hiện Thực Lịch Sử & Nhận Thức Lịch Sử (Lịch Sử 10)", theory: ["<b>Hiện thực lịch sử:</b> Những gì đã diễn ra trong quá khứ, tồn tại khách quan.", "<b>Lịch sử nhận thức:</b> Hiểu biết của con người về hiện thực lịch sử."], example: "Trận Bạch Đằng 938 là hiện thực; sách ghi chép lại là nhận thức.", exercises: ["1. Phân biệt hiện thực và nhận thức lịch sử.", "2. Ý nghĩa lịch sử."] } },
+                "Địa Lý": { "1": { title: "Mặt Trời & Trái Đất - Hệ Mặt Trời (Địa Lý 10)", theory: ["<b>Hệ Mặt Trời:</b> Gồm Mặt Trời ở trung tâm và 8 hành tinh quay xung quanh.", "<b>Lực Coriolis:</b> Làm lệch hướng chuyển động của các vật thể."], example: "Ở Bắc bán cầu, vật thể lệch hướng về bên phải theo chiều chuyển động.", exercises: ["1. Trình bày tác động của lực Coriolis.", "2. Giải thích hiện tượng ngày đêm dài ngắn."] } },
+                "GDKT & Pháp Luật": { "1": { title: "Thị Trường & Cơ Chế Thị Trường (GDKT & PL 10)", theory: ["<b>Thị trường:</b> Tổng hòa các quan hệ kinh tế giữa người mua và người bán.", "<b>Cơ chế thị trường:</b> Tự điều tiết cân bằng cung - cầu."], example: "Giá cả tăng khi nhu cầu người mua vượt khả năng cung ứng.", exercises: ["1. Nêu chức năng của thị trường.", "2. Ví dụ về quy luật cung cầu."] } }
             }
         };
 
@@ -325,7 +284,6 @@
             if (grade <= 5) category = "primary";
             else if (grade <= 9) category = "secondary";
 
-            // Populate subjects
             const subjects = subjectOptionsMap[category];
             subjectSelect.innerHTML = subjects.map(s => `<option value="${s}">${s}</option>`).join('');
 
@@ -340,12 +298,9 @@
 
             document.getElementById('wsBadge').innerText = `${subject} Lớp ${grade} - Tuần ${week}`;
             
-            // Get data or fallback to sample
             let data = null;
             if (worksheetData[grade] && worksheetData[grade][subject] && worksheetData[grade][subject][week]) {
                 data = worksheetData[grade][subject][week];
-            } else if (worksheetData[grade] && worksheetData[grade][subject] && worksheetData[grade][subject]["1"]) {
-                data = worksheetData[grade][subject]["1"];
             } else {
                 data = {
                     title: `Tóm Tắt Kiến Thức Cốt Lõi (${subject} - Lớp ${grade} - Tuần ${week})`,
@@ -409,34 +364,76 @@
             window.print();
         }
 
-        // Popup Handlers
+        // Handle Borrow Form with Validation
         function handleBorrow(e) {
             e.preventDefault();
-            const form = e.target;
-            const nameInput = form.querySelector('input[placeholder*="Nguyễn Văn A"]').value || "Học sinh";
-            const bookSelect = form.querySelector('select').value;
+            const name = document.getElementById('borrowName').value.trim();
+            const classSchool = document.getElementById('borrowClassSchool').value.trim();
+            const series = document.getElementById('borrowSeries').value;
 
+            // Get selected subjects from checkboxes
+            const checkedSubjects = Array.from(document.querySelectorAll('input[name="borrowSubject"]:checked')).map(cb => cb.value);
+
+            // Validation Rule: Must contain '-' separating Class and School
+            const classSchoolRegex = /^(.{2,})\s*-\s*(.{3,})$/;
+            if (!classSchoolRegex.test(classSchool)) {
+                Swal.fire({
+                    title: '⚠️ ĐỊNH DẠNG CHƯA ĐÚNG!',
+                    html: `
+                        <div class="text-left text-sm text-slate-700 space-y-2 mt-2">
+                            <p class="text-red-600 font-semibold">Vui lòng nhập đúng định dạng Lớp và Trường!</p>
+                            <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-xs text-amber-900 space-y-1">
+                                <p>💡 <b>Cú pháp chuẩn:</b> <code>[Tên Lớp] - [Tên Trường]</code></p>
+                                <p>📌 <b>Ví dụ:</b> <code>Lớp 10A1 - THPT Nguyễn Trãi</code></p>
+                                <p><i>(Bắt buộc phải có dấu gạch ngang '-' ở giữa).</i></p>
+                            </div>
+                        </div>
+                    `,
+                    icon: 'warning',
+                    confirmButtonText: 'Nhập Lại',
+                    confirmButtonColor: '#d97706',
+                    borderRadius: '1rem'
+                });
+                return;
+            }
+
+            // Validation Rule: Must select at least 1 subject
+            if (checkedSubjects.length === 0) {
+                Swal.fire({
+                    title: '⚠️ CHƯA CHỌN MÔN HỌC!',
+                    text: 'Vui lòng tích chọn ít nhất 01 môn học bạn cần mượn sách!',
+                    icon: 'warning',
+                    confirmButtonText: 'Chọn Môn Tích',
+                    confirmButtonColor: '#d97706',
+                    borderRadius: '1rem'
+                });
+                return;
+            }
+
+            // Success Popup
             Swal.fire({
                 title: '🎉 ĐĂNG KÝ THÀNH CÔNG!',
                 html: `
                     <div class="text-left text-sm text-slate-700 space-y-3 mt-2">
-                        <p class="text-center font-medium text-slate-600">Cảm ơn em <b class="text-blue-900">${nameInput}</b> đã đăng ký mượn sách xoay vòng!</p>
+                        <p class="text-center font-medium text-slate-600">Cảm ơn em <b class="text-blue-900">${name}</b> (${classSchool}) đã đăng ký!</p>
                         <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-900 space-y-1">
-                            <p>📚 <b>Sách mượn:</b> ${bookSelect}</p>
+                            <p>📖 <b>Bộ sách:</b> ${series}</p>
+                            <p>📚 <b>Môn đăng ký (${checkedSubjects.length} môn):</b> ${checkedSubjects.join(', ')}</p>
                             <p>📍 <b>Địa điểm nhận:</b> Thư viện trường (Cán bộ Thư viện)</p>
                             <p>⏰ <b>Thời gian:</b> Giờ ra chơi ngày làm việc tiếp theo</p>
                         </div>
                     </div>
                 `,
                 icon: 'success',
-                confirmButtonText: 'Đã Hiểu & Xóa Form',
+                confirmButtonText: 'Đã Hiểu & Hoàn Tất',
                 confirmButtonColor: '#1e3a8a',
                 borderRadius: '1rem'
             });
 
-            form.reset();
+            e.target.reset();
         }
 
+        // Donate Handler
         function handleDonate(e) {
             e.preventDefault();
             const form = e.target;
