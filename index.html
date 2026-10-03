@@ -199,18 +199,41 @@
                             <input type="text" id="donateClassSchool" required placeholder="Cựu học sinh 12A1 - THPT Nguyễn Trãi" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
                             <p class="text-[11px] text-slate-500 mt-1">Lưu ý: Bắt buộc chứa thông tin Lớp/Khóa, dấu gạch ngang '-' và tên Trường.</p>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-1">Bộ Sách Giáo Khoa Trao Tặng</label>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Khối Lớp</label>
+                                <select id="donateGrade" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 bg-white text-sm font-medium">
+                                    <optgroup label="🌱 TIỂU HỌC">
+                                        <option value="Lớp 1">Lớp 1</option>
+                                        <option value="Lớp 2">Lớp 2</option>
+                                        <option value="Lớp 3">Lớp 3</option>
+                                        <option value="Lớp 4">Lớp 4</option>
+                                        <option value="Lớp 5">Lớp 5</option>
+                                    </optgroup>
+                                    <optgroup label="🌿 THCS">
+                                        <option value="Lớp 6">Lớp 6</option>
+                                        <option value="Lớp 7">Lớp 7</option>
+                                        <option value="Lớp 8">Lớp 8</option>
+                                        <option value="Lớp 9">Lớp 9</option>
+                                    </optgroup>
+                                    <optgroup label="🌳 THPT">
+                                        <option value="Lớp 10" selected>Lớp 10</option>
+                                        <option value="Lớp 11">Lớp 11</option>
+                                        <option value="Lớp 12">Lớp 12</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Bộ Sách Giáo Khoa</label>
                                 <select id="donateSeries" class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-emerald-500 bg-white text-sm">
                                     <option value="Bộ Sách Cánh Diều">Bộ Sách Cánh Diều</option>
-                                    <option value="Bộ Sách Kết Nối Tri Thức Với Cuộc Sống">Bộ Sách Kết Nối Tri Thức Với Cuộc Sống</option>
+                                    <option value="Bộ Sách Kết Nối Tri Thức Với Cuộc Sống">Bộ Sách Kết Nối Tri Thức</option>
                                     <option value="Bộ Sách Chân Trời Sáng Tạo">Bộ Sách Chân Trời Sáng Tạo</option>
                                     <option value="Bộ Sách Tổng Hợp Khác">Bộ Sách Tổng Hợp Khác</option>
                                 </select>
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-1">Số Lượng Bộ Sách</label>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Số Lượng Bộ</label>
                                 <input type="number" id="donateQuantity" min="1" value="1" required class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-emerald-500">
                             </div>
                         </div>
@@ -471,6 +494,7 @@
             e.preventDefault();
             const name = document.getElementById('donateName').value.trim();
             const classSchool = document.getElementById('donateClassSchool').value.trim();
+            const grade = document.getElementById('donateGrade').value;
             const series = document.getElementById('donateSeries').value;
             const quantity = document.getElementById('donateQuantity').value || 1;
 
@@ -500,7 +524,7 @@
 
             if (checkedSubjects.length === 0) {
                 Swal.fire({
-                    title: '⚠️ CHƯA CHỌN MÔN HỌC!',
+                    title: '⚠️️ CHƯA CHỌN MÔN HỌC!',
                     text: 'Vui lòng tích chọn ít nhất 01 môn học bạn quyên góp / trao tặng!',
                     icon: 'warning',
                     confirmButtonText: 'Chọn Môn Tích',
@@ -516,6 +540,7 @@
                     <div class="text-left text-sm text-slate-700 space-y-3 mt-2">
                         <p class="text-center font-medium text-slate-600">Hệ thống đã ghi nhận thông tin trao tặng từ <b class="text-emerald-700">${name}</b> (${classSchool}).</p>
                         <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-900 space-y-1">
+                            <p>🎓 <b>Dành cho khối:</b> ${grade}</p>
                             <p>📖 <b>Bộ sách trao tặng:</b> ${series}</p>
                             <p>📦 <b>Số lượng:</b> ${quantity} bộ sách giáo khoa cũ</p>
                             <p>📚 <b>Các môn quyên góp (${checkedSubjects.length} môn):</b> ${checkedSubjects.join(', ')}</p>
