@@ -14,7 +14,7 @@ Trong những tuần đầu năm học, tình trạng thiếu hụt sách giáo 
 **EduShare** được thiết kế như một mô hình vận hành chuyển tiếp (2–4 tuần) đáp ứng đồng thời 6 tiêu chí:
 1. **Không ngắt quãng việc học:** Cung cấp tài liệu tóm tắt kiến thức cốt lõi ngay từ Tuần 1.
 2. **Tuân thủ 100% Luật SHTT:** Áp dụng ngoại lệ trích dẫn hợp lý tại Điều 25 Luật SHTT 2022.
-3. **Chi phí $0đ – tiệm cận 0đ:** Tận dụng hạ tầng in ấn sẵn có và nguồn sách cũ quyên góp.
+3. **Chi phí 0đ – tiệm cận 0đ:** Tận dụng hạ tầng in ấn sẵn có và nguồn sách cũ quyên góp.
 4. **Triển khai nhanh:** Kích hoạt tại trường học trong vòng 24–48 giờ.
 5. **Khai thác tài nguyên sẵn có:** Kết hợp Thư viện trường và Cổng học liệu mở của NXB.
 6. **Tính chất chuyển tiếp:** Tự động kết thúc khi nguồn sách chính thức được bàn giao đủ.
